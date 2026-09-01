@@ -1,0 +1,10 @@
+{
+  "scope": "Recorded serving campaign; one fixed workload and deployment",
+  "runs": [
+    {"name": "comp-400", "concurrency": 400, "ttft_p95_ms": 1154, "itl_p95_ms": 5.7, "throughput_sse_chunks_s": 16187},
+    {"name": "comp-450", "concurrency": 450, "ttft_p95_ms": 1461, "itl_p95_ms": 5.8, "throughput_sse_chunks_s": 16124},
+    {"name": "comp-600", "concurrency": 600, "ttft_p95_ms": 4894, "itl_p95_ms": 5.9, "throughput_sse_chunks_s": 13412},
+    {"name": "comp-600-ci128", "concurrency": 600, "ttft_p95_ms": 5347, "itl_p95_ms": 6.0, "throughput_sse_chunks_s": 9688}
+  ],
+  "repeat_bands": {"ttft_p95_pct": 30, "itl_p95_pct": 2, "throughput_pct": 7}
+}

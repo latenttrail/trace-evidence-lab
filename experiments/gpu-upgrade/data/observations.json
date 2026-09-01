@@ -1,0 +1,14 @@
+{
+  "experiment": "gpu-upgrade",
+  "evidence_class": "Measured by us",
+  "scope": "One fixed text-serving workload; values are recorded observations, not a rerun.",
+  "hardware_swap": {
+    "h100": {"gpus": 4, "itl_p95_ms": 5.7, "throughput_sse_chunks_per_s": 16187},
+    "h200": {"gpus": 4, "itl_p95_ms": 5.3, "throughput_sse_chunks_per_s": 15260}
+  },
+  "repeat_bands": {"itl_pct": 2, "throughput_pct": 7},
+  "compiled_counterfactual": {
+    "eager": {"users": 200, "itl_p95_ms": 19.2, "throughput_sse_chunks_per_s": 5434},
+    "compiled": {"users": 200, "itl_p95_ms": 5.5, "throughput_sse_chunks_per_s": 8438}
+  }
+}

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+<title id="title">Every token came out at the same speed. The first one took four times longer.</title>
+<desc id="desc">Raising concurrency from 400 to 600 users leaves inter-token latency +3.5% · just outside ±2% at 5.7 to 5.9 milliseconds, while time to first token rises from 1,154 to 4,894 milliseconds and throughput falls from 16,187 to 13,412 streamed chunks per second. The diagnosis, labelled derived, is that requests were queueing for admission rather than generating slowly. Raising the admission limit made throughput worse, falling to 9,688.</desc>
+<style>text{font-family:Inter,'Avenir Next','Segoe UI',system-ui,-apple-system,sans-serif}</style>
+<rect width="1200" height="1500" fill="#11151D"/>
+<text x="64" y="70" font-size="20" fill="#4FC49D" font-weight="800" text-anchor="start" letter-spacing="3">TRACE EVIDENCE · POST 2</text>
+<text x="64" y="140" font-size="47" fill="#EEF2F8" font-weight="800" text-anchor="start" >Every token came out at the same speed.</text>
+<text x="64" y="200" font-size="47" fill="#EEF2F8" font-weight="800" text-anchor="start" >The first one took four times longer.</text>
+<text x="64" y="248" font-size="23" fill="#93A1B6" font-weight="500" text-anchor="start" >400 → 600 concurrent users · same model · same hardware · one changed variable</text>
+
+<g id="s1"><rect x="64" y="286" width="38" height="38" rx="19" fill="#6BA5EA" stroke="#6BA5EA" stroke-width="2"/><text x="83" y="312" font-size="19" fill="#FFFFFF" font-weight="800" text-anchor="middle" >1</text><text x="116" y="312" font-size="18" fill="#93A1B6" font-weight="700" text-anchor="start" >THE TWO CLOCKS</text>
+<rect x="64" y="340" width="524" height="246" rx="24" fill="#152439" stroke="#6BA5EA" stroke-width="2"/>
+<text x="96" y="382" font-size="16" fill="#6BA5EA" font-weight="800" text-anchor="start" letter-spacing="1.5">TIME TO FIRST TOKEN</text>
+<text x="96" y="412" font-size="17" fill="#93A1B6" font-weight="500" text-anchor="start" >how long you stare at nothing</text>
+<text x="96" y="478" font-size="38" fill="#93A1B6" font-weight="800" text-anchor="start" >1,154 ms</text><path d="M300 466H356" fill="none" stroke="#E4808F" stroke-width="5" stroke-linecap="round"/><path d="M348 455L372 466L348 477" fill="none" stroke="#E4808F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="392" y="478" font-size="38" fill="#E4808F" font-weight="800" text-anchor="start" >4,894 ms</text>
+<text x="96" y="514" font-size="16" fill="#93A1B6" font-weight="600" text-anchor="start" >400 users</text><text x="392" y="514" font-size="16" fill="#93A1B6" font-weight="600" text-anchor="start" >600 users</text>
+<text x="96" y="556" font-size="18" fill="#E4808F" font-weight="700" text-anchor="start" >4.24× · far outside the ±30% band</text>
+<rect x="612" y="340" width="524" height="246" rx="24" fill="#10312A" stroke="#4FC49D" stroke-width="2"/>
+<text x="644" y="382" font-size="16" fill="#4FC49D" font-weight="800" text-anchor="start" letter-spacing="1.5">INTER-TOKEN LATENCY</text>
+<text x="644" y="412" font-size="17" fill="#93A1B6" font-weight="500" text-anchor="start" >the gap between words after that</text>
+<text x="644" y="478" font-size="38" fill="#93A1B6" font-weight="800" text-anchor="start" >5.7 ms</text><path d="M790 466H846" fill="none" stroke="#4FC49D" stroke-width="5" stroke-linecap="round"/><path d="M838 455L862 466L838 477" fill="none" stroke="#4FC49D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="882" y="478" font-size="38" fill="#EEF2F8" font-weight="800" text-anchor="start" >5.9 ms</text>
+<text x="644" y="514" font-size="16" fill="#93A1B6" font-weight="600" text-anchor="start" >400 users</text><text x="882" y="514" font-size="16" fill="#93A1B6" font-weight="600" text-anchor="start" >600 users</text>
+<text x="644" y="556" font-size="18" fill="#4FC49D" font-weight="700" text-anchor="start" >+3.5% · just outside ±2%</text></g>
+
+<g id="s2"><line x1="64" y1="624" x2="1136" y2="624" stroke="#28303E" stroke-width="2" />
+<rect x="64" y="654" width="38" height="38" rx="19" fill="#E4808F" stroke="#E4808F" stroke-width="2"/><text x="83" y="680" font-size="19" fill="#FFFFFF" font-weight="800" text-anchor="middle" >2</text><text x="116" y="680" font-size="18" fill="#93A1B6" font-weight="700" text-anchor="start" >AND LESS THROUGHPUT</text>
+<rect x="64" y="710" width="1072" height="132" rx="20" fill="#161C26" stroke="#28303E" stroke-width="2"/>
+<text x="96" y="752" font-size="16" fill="#93A1B6" font-weight="800" text-anchor="start" letter-spacing="1.5">THROUGHPUT, STREAMED CHUNKS/S</text>
+<text x="96" y="806" font-size="36" fill="#EEF2F8" font-weight="800" text-anchor="start" >16,187</text><path d="M250 796H324" fill="none" stroke="#93A1B6" stroke-width="5" stroke-linecap="round"/><path d="M316 785L340 796L316 807" fill="none" stroke="#93A1B6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="360" y="806" font-size="36" fill="#E4808F" font-weight="800" text-anchor="start" >13,412</text>
+<text x="620" y="790" font-size="22" fill="#EEF2F8" font-weight="700" text-anchor="start" >−17% from 50% more users</text><text x="620" y="822" font-size="18" fill="#93A1B6" font-weight="600" text-anchor="start" >not flattening — reversing</text></g>
+
+<g id="s3"><line x1="64" y1="878" x2="1136" y2="878" stroke="#28303E" stroke-width="2" />
+<rect x="64" y="908" width="38" height="38" rx="19" fill="#E2AC53" stroke="#E2AC53" stroke-width="2"/><text x="83" y="934" font-size="19" fill="#FFFFFF" font-weight="800" text-anchor="middle" >3</text><text x="116" y="934" font-size="18" fill="#93A1B6" font-weight="700" text-anchor="start" >DIAGNOSIS · DERIVED</text>
+<rect x="64" y="960" width="1072" height="164" rx="20" fill="#302511" stroke="#E2AC53" stroke-width="2"/>
+<text x="96" y="1008" font-size="28" fill="#EEF2F8" font-weight="800" text-anchor="start" >The machine was not generating more slowly.</text>
+<text x="96" y="1050" font-size="21" fill="#93A1B6" font-weight="500" text-anchor="start" >Generation speed held; only the wait to start collapsed. That points upstream — to</text>
+<text x="96" y="1084" font-size="21" fill="#93A1B6" font-weight="500" text-anchor="start" >admission and queueing, not the decode path. An interpretation, not a measured field.</text></g>
+
+<g id="s4"><line x1="64" y1="1160" x2="1136" y2="1160" stroke="#28303E" stroke-width="2" />
+<rect x="64" y="1190" width="38" height="38" rx="19" fill="#E4808F" stroke="#E4808F" stroke-width="2"/><text x="83" y="1216" font-size="19" fill="#FFFFFF" font-weight="800" text-anchor="middle" >4</text><text x="116" y="1216" font-size="18" fill="#93A1B6" font-weight="700" text-anchor="start" >THE OBVIOUS FIX MADE IT WORSE</text>
+<rect x="64" y="1242" width="1072" height="130" rx="20" fill="#361C23" stroke="#E4808F" stroke-width="2"/>
+<text x="96" y="1286" font-size="21" fill="#93A1B6" font-weight="500" text-anchor="start" >Raised the admission limit at 600 users — let more in, clear the backlog</text>
+<text x="96" y="1340" font-size="34" fill="#93A1B6" font-weight="800" text-anchor="start" >13,412</text><path d="M250 1330H324" fill="none" stroke="#E4808F" stroke-width="5" stroke-linecap="round"/><path d="M316 1319L340 1330L316 1341" fill="none" stroke="#E4808F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="360" y="1340" font-size="34" fill="#E4808F" font-weight="800" text-anchor="start" >9,688</text>
+<text x="620" y="1332" font-size="26" fill="#E4808F" font-weight="800" text-anchor="start" >a further −28%</text>
+<text x="64" y="1420" font-size="25" fill="#EEF2F8" font-weight="800" text-anchor="start" >When the dashboard says it got slower, ask which clock moved.</text>
+<text x="64" y="1454" font-size="14" fill="#93A1B6" font-weight="500" text-anchor="start" >Qwen3-VL-4B · vLLM 0.21.0 · 4×H100 · compiled · 90 s runs · bands from four repeats</text>
+<text x="64" y="1478" font-size="14" fill="#93A1B6" font-weight="500" text-anchor="start" >At 450 users nothing moved outside its band. No knee is claimed there.</text></g>
+</svg>
