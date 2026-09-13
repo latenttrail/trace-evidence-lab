@@ -12,6 +12,8 @@ not claim that one GPU, engine, or configuration is universally best.
 |---|---|---|
 | [`gpu-upgrade`](experiments/gpu-upgrade/) | Did a newer GPU improve the response, or did the workload bottleneck live elsewhere? | Recorded result + checked receipt |
 | [`two-clocks`](experiments/two-clocks/) | When load rises, did generation slow down or did requests wait longer to start? | Recorded result + checked receipt |
+| [`preemption-thrash`](experiments/preemption-thrash/) | If the KV cache is what runs out, what does raising the admission limit actually buy? | Teaching miniature, simulator-derived |
+| [`long-prompt-stall`](experiments/long-prompt-stall/) | What does one arriving long prompt cost the conversations already in flight? | Teaching miniature, simulator-derived |
 
 ## Evidence classes
 
@@ -19,6 +21,9 @@ not claim that one GPU, engine, or configuration is universally best.
 - **Derived** — arithmetic or diagnosis computed from measured inputs.
 - **Configured** — a setting selected before a run, not an observed result.
 - **Released/documented** — a fact from a public versioned artifact.
+- **Teaching miniature** — a deliberately reduced model or simulation that preserves a named
+  mechanism. It is never labelled *Measured by us*, however deterministic it is, and it
+  establishes nothing about any real engine's performance.
 
 The lab never treats a configured threshold as a measurement, and never turns one workload into a
 universal recommendation.

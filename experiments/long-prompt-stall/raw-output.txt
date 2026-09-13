@@ -1,0 +1,104 @@
+Trace Evidence · Post 4 (stable research ID 8) - proof object
+=====================================================
+
+Claim under test
+----------------
+A long prompt arriving from a new user delays the replies of users already
+mid-conversation. Nothing is overloaded, nothing errors, and the affected users
+never sent the prompt that slowed them down.
+
+The cause is that prefill and decode compete for the same forward pass. A step
+spent reading a 4,000-token prompt is a step in which nobody in flight gets a
+token.
+
+Evidence class : Teaching miniature - simulator-derived, never 'Measured by us'
+Provenance     : Ankit run against `sim/serving_sim.py`, written for this series.
+
+Scope boundary
+--------------
+A simulation, not a benchmark. Time is measured in scheduler steps, not
+milliseconds - converting would be inventing a number. It reproduces the SHAPE
+of the interaction and the mechanism that causes it. It is not a measurement of
+any engine, and no engine is named or ranked.
+
+Dependencies
+------------
+Python 3 standard library only.
+
+==========================================================================
+FOUR CONVERSATIONS IN FLIGHT. AT STEP 40, ONE 4,096-TOKEN PROMPT ARRIVES.
+==========================================================================
+
+  prefill takes the whole step
+    steps where nobody in flight got a token      9
+    typical gap between tokens                    1 step
+    worst gap between tokens                      9 steps
+
+
+  prefill chunked alongside decode
+    steps where nobody in flight got a token      0
+    typical gap between tokens                    1 step
+    worst gap between tokens                      1 steps
+
+  The four original users sent 128-token prompts and asked for nothing unusual.
+  Their worst pause went from 1 step to 9 steps because somebody else
+  arrived with a long prompt.
+
+
+==========================================================================
+AND IT SCALES WITH THE PROMPT, NOT WITH THE LOAD
+==========================================================================
+    new prompt |  worst gap for the users already there
+  -------------+---------------------------------------
+           256 |                                2 steps
+         1,024 |                                3 steps
+         4,096 |                                9 steps
+        16,384 |                               33 steps
+
+==========================================================================
+THE THREE CLAIMS THAT WERE ASSERTED BUT NEVER COMPUTED
+==========================================================================
+
+  The caption says throughput did not change, that the long prompt's own numbers
+  look fine, and that each affected user looks unremarkable on their own. Those
+  were prose in an earlier version of this receipt and nothing here calculated
+  them. They are calculated and asserted below, or they do not ship.
+
+  decode tokens delivered to the four original users
+    no long prompt arrives     400
+    long prompt at step 40     400   +0.0 %
+
+  the long request's own numbers
+    time to its first token      8 steps
+    its own worst gap            1 steps
+
+  each affected user, seen alone
+      user | median gap | worst gap
+    -------+------------+----------
+         0 |          1 |         9
+         1 |          1 |         9
+         2 |          1 |         9
+         3 |          1 |         9
+
+  Throughput to the four is unchanged at +0.0 %: the tokens still arrive,
+  they arrive later. The long request's own view is clean. Every affected user's
+  MEDIAN gap is 1 step or better while their worst is 9. Nothing in a
+  per-request average shows this; only the gap inside one conversation does.
+
+
+==========================================================================
+RESULT
+==========================================================================
+
+  A user who was already talking to the system experienced a 9-step pause
+  caused entirely by a request that was not theirs.
+
+  This is why per-request latency averages hide the problem, and the section
+  above computes it rather than asserting it: the long prompt's own numbers look
+  fine, and the cost was paid by four other people.
+
+  Chunked prefill does not make the work disappear. It spreads it, so the pause
+  is distributed instead of landing on one turn.
+
+  When you measure tail latency, measure it per conversation - not per request.
+
