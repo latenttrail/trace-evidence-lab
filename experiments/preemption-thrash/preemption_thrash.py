@@ -15,16 +15,23 @@ looks like it has simply reached capacity, and the scheduler never once runs
 out of admitted work - because it is reprocessing prompts it has already
 processed.
 
-Two corrections this script encodes
------------------------------------
+Three corrections this script encodes
+-------------------------------------
 1. An earlier version counted discarded work as `preemptions * output_length`,
    which assumes every evicted request had generated a full output. It had not.
    The simulator now records the tokens actually lost at the moment the KV is
-   dropped, and the true decode figure is roughly 37x smaller than that estimate.
+   dropped, and the true decode figure is roughly 24x smaller than that estimate.
 
 2. With the honest accounting, the waste is not mostly decode at all. It is
    PREFILL: each eviction forces a whole prompt to be processed again. Decode
-   loss stays small and does not grow; re-prefill grows without limit.
+   loss grows modestly; re-prefill grows an order of magnitude faster.
+
+3. An earlier version of this script tallied only finished and running
+   requests. An evicted request goes back to the waiting queue, so any request
+   still waiting when the run stopped - and every eviction it had suffered -
+   was left out. That undercounted evictions by more than half at the top
+   setting and made decode loss appear to fall as admission rose. Every
+   request is now counted wherever it is when the run ends.
 
    Prefill and decode tokens are NOT summed here. A prefill token and a decode
    token do not cost the same - prefill is compute-bound and processes the
@@ -36,8 +43,10 @@ Provenance     : Ankit run against `sim/serving_sim.py`. Not a hardware measurem
 
 Scope boundary
 --------------
-A simulation. Steps, not milliseconds. It reproduces the mechanism and its
-shape; it is not a benchmark of any engine, and no engine is named or ranked.
+A simulation. Steps, not milliseconds. Every run is a fixed window of 400
+scheduler steps, and every count is what happened inside that window. It
+reproduces the mechanism and its shape; it is not a benchmark of any engine,
+and no engine is named or ranked.
 
 NO UTILISATION CLAIM IS MADE HERE, and an earlier version of this receipt made
 one. sim/serving_sim.py states that it "does NOT model kernels, precision, real
@@ -81,7 +90,9 @@ def run(max_batch, blocks=BLOCKS):
 
 
 def report(e):
-    allr = e.done + e.running
+    # An evicted request goes back to e.waiting. Leaving the queue out drops
+    # every eviction suffered by a request that had not been re-admitted yet.
+    allr = e.done + e.running + e.waiting
     return {
         "done": len([r for r in e.done if r.done_at is not None]),
         "hit": len([r for r in allr if r.preemptions]),
@@ -131,12 +142,11 @@ if __name__ == "__main__":
     print(f"""
   decode tokens delivered                    {top['kept']:>8,}
   decode tokens generated then evicted       {top['dec']:>8,}
-  prompt tokens processed a second time      {top['pre']:>8,}
+  prompt tokens reprocessed                  {top['pre']:>8,}
 
   The intuition is that eviction throws away generated text. It mostly does not.
-  At this setting a request loses about {top['dec']/top['ev']:.0f} generated tokens per eviction, and the
-  decode loss does NOT grow with the admission limit: it goes {dec_lo:,} -> {dec_hi:,} while
-  evictions go {ev_lo} -> {ev_hi}.
+  At this setting a request loses about {top['dec']/top['ev']:.0f} generated tokens per eviction. Decode
+  loss grows only {dec_hi/dec_lo:.1f}x ({dec_lo:,} -> {dec_hi:,}) while evictions go {ev_lo} -> {ev_hi}.
 
   What grows is re-prefill. Every eviction sends a request back to the start of
   its {PROMPT}-token prompt, so the engine reprocesses {top['pre']:,} prompt tokens to deliver
@@ -148,7 +158,8 @@ if __name__ == "__main__":
 """)
     assert top["pre"] > top["kept"] * 5, "re-prefill should dominate delivered output"
     assert top["dec"] < top["kept"], "decode loss should be small next to delivered output"
-    assert dec_hi <= dec_lo, "decode loss should not grow as admission rises"
+    assert pre_hi / pre_lo > 4 * (dec_hi / dec_lo), \
+        "re-prefill should grow far faster than decode loss as admission rises"
 
     rule("RAISING THE LIMIT MAKES EACH REQUEST PROGRESS LESS")
     print(f"\n  {'max batch':>10} | {'evictions':>10} | {'decode tokens per eviction':>27}")
@@ -174,6 +185,8 @@ if __name__ == "__main__":
     at_admit = math.ceil(PROMPT / BLOCK_SIZE)
     at_done = math.ceil((PROMPT + OUTPUT) / BLOCK_SIZE)
     fits_admit, fits_done = BLOCKS // at_admit, BLOCKS // at_done
+    # Where evictions begin, one admission limit at a time.
+    first_evict = next(mb for mb in range(1, fits_admit + 1) if report(run(mb))["ev"])
     print(f"""
   cache                                   {BLOCKS} blocks x {BLOCK_SIZE} tokens = {slots:,} token slots
   a request holding its prompt            ceil({PROMPT}/{BLOCK_SIZE})       = {at_admit} blocks
@@ -185,13 +198,15 @@ if __name__ == "__main__":
   request is not a fixed-size object: it grows for as long as it runs, so a set
   that fits on the way in does not fit on the way out.
 
-  The plateau sits at max batch 8, between {fits_done} and {fits_admit}, which is what this
-  arithmetic predicts. Sizing the limit on terminal occupancy rather than
-  admission-time occupancy is what watermarking exists to approximate.
+  Stepping the limit one at a time, the first eviction appears at max batch
+  {first_evict}: the first setting above the {fits_done} that fit at completion, and well below
+  the {fits_admit} that fit at admission. That is where this arithmetic says thrash should
+  start. Sizing the limit on terminal occupancy rather than admission-time
+  occupancy is what watermarking exists to approximate.
 """)
     assert fits_done < fits_admit, "a request must grow while it runs, or there is no trade-off"
-    assert fits_done <= plateau[0][0] <= fits_admit, \
-        f"the plateau ({plateau[0][0]}) should fall between terminal ({fits_done}) and admission ({fits_admit}) capacity"
+    assert first_evict == fits_done + 1, \
+        f"evictions should begin just above terminal capacity ({fits_done}), not at {first_evict}"
 
     rule("WHY THE OBVIOUS FIX MAKES IT WORSE")
     print("""

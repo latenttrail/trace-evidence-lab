@@ -14,16 +14,23 @@ looks like it has simply reached capacity, and the scheduler never once runs
 out of admitted work - because it is reprocessing prompts it has already
 processed.
 
-Two corrections this script encodes
------------------------------------
+Three corrections this script encodes
+-------------------------------------
 1. An earlier version counted discarded work as `preemptions * output_length`,
    which assumes every evicted request had generated a full output. It had not.
    The simulator now records the tokens actually lost at the moment the KV is
-   dropped, and the true decode figure is roughly 37x smaller than that estimate.
+   dropped, and the true decode figure is roughly 24x smaller than that estimate.
 
 2. With the honest accounting, the waste is not mostly decode at all. It is
    PREFILL: each eviction forces a whole prompt to be processed again. Decode
-   loss stays small and does not grow; re-prefill grows without limit.
+   loss grows modestly; re-prefill grows an order of magnitude faster.
+
+3. An earlier version of this script tallied only finished and running
+   requests. An evicted request goes back to the waiting queue, so any request
+   still waiting when the run stopped - and every eviction it had suffered -
+   was left out. That undercounted evictions by more than half at the top
+   setting and made decode loss appear to fall as admission rose. Every
+   request is now counted wherever it is when the run ends.
 
    Prefill and decode tokens are NOT summed here. A prefill token and a decode
    token do not cost the same - prefill is compute-bound and processes the
@@ -35,8 +42,10 @@ Provenance     : Ankit run against `sim/serving_sim.py`. Not a hardware measurem
 
 Scope boundary
 --------------
-A simulation. Steps, not milliseconds. It reproduces the mechanism and its
-shape; it is not a benchmark of any engine, and no engine is named or ranked.
+A simulation. Steps, not milliseconds. Every run is a fixed window of 400
+scheduler steps, and every count is what happened inside that window. It
+reproduces the mechanism and its shape; it is not a benchmark of any engine,
+and no engine is named or ranked.
 
 NO UTILISATION CLAIM IS MADE HERE, and an earlier version of this receipt made
 one. sim/serving_sim.py states that it "does NOT model kernels, precision, real
@@ -58,16 +67,16 @@ SAME LOAD, SAME CACHE, ONE SETTING CHANGED: HOW MANY TO ADMIT
    max batch |  completed |  evictions |  prompt tokens re-prefilled |  decode tokens lost
   -----------+------------+------------+-----------------------------+--------------------
            4 |          5 |          0 |                           0 |                   0
-           8 |          8 |         16 |                       4,096 |                 574
-          16 |          8 |         64 |                      16,384 |                 552
-          24 |          8 |         97 |                      24,832 |                 518
-          32 |          8 |         97 |                      24,832 |                 518
+           8 |          8 |         17 |                       4,352 |                 581
+          16 |          8 |        161 |                      41,216 |                 792
+          24 |          8 |        215 |                      55,040 |                 792
+          32 |          8 |        215 |                      55,040 |                 792
 
   Completions stop improving at max batch 8 and never move again: 8 for
   every setting above it.
 
-  Over the same range evictions go 16 -> 97, and prompt tokens re-prefilled
-  go 4,096 -> 24,832. A 6x increase in repeated work bought exactly nothing.
+  Over the same range evictions go 17 -> 215, and prompt tokens re-prefilled
+  go 4,352 -> 55,040. A 13x increase in repeated work bought exactly nothing.
 
   Nothing errored. No request was rejected. The queue was served throughout, and
   the engine never ran out of admitted work to issue.
@@ -78,17 +87,16 @@ THE WASTE IS PREFILL, NOT DECODE
 ==========================================================================
 
   decode tokens delivered                       2,409
-  decode tokens generated then evicted            518
-  prompt tokens processed a second time        24,832
+  decode tokens generated then evicted            792
+  prompt tokens reprocessed                    55,040
 
   The intuition is that eviction throws away generated text. It mostly does not.
-  At this setting a request loses about 5 generated tokens per eviction, and the
-  decode loss does NOT grow with the admission limit: it goes 574 -> 518 while
-  evictions go 16 -> 97.
+  At this setting a request loses about 4 generated tokens per eviction. Decode
+  loss grows only 1.4x (581 -> 792) while evictions go 17 -> 215.
 
   What grows is re-prefill. Every eviction sends a request back to the start of
-  its 256-token prompt, so the engine reprocesses 24,832 prompt tokens to deliver
-  2,409 tokens of output - 10.3 prompt tokens reprocessed per token delivered.
+  its 256-token prompt, so the engine reprocesses 55,040 prompt tokens to deliver
+  2,409 tokens of output - 22.8 prompt tokens reprocessed per token delivered.
 
   These two are deliberately not added together. Prefill is compute-bound and
   parallel; decode is memory-bound and sequential. A combined 'wasted tokens'
@@ -101,14 +109,14 @@ RAISING THE LIMIT MAKES EACH REQUEST PROGRESS LESS
 
    max batch |  evictions |  decode tokens per eviction
   -----------+------------+----------------------------
-           8 |         16 |                        35.9
-          16 |         64 |                         8.6
-          24 |         97 |                         5.3
-          32 |         97 |                         5.3
+           8 |         17 |                        34.2
+          16 |        161 |                         4.9
+          24 |        215 |                         3.7
+          32 |        215 |                         3.7
 
   This is the part a dashboard cannot show. Raising the limit does not only
   cause more evictions. It causes each request to get less far before it is
-  knocked back: from 36 generated tokens per eviction down to 5.
+  knocked back: from 34 generated tokens per eviction down to 4.
 
   The engine is admitting work, letting it produce a handful of tokens, evicting
   it, reprocessing its whole prompt, and repeating. The scheduler stays saturated
@@ -129,9 +137,11 @@ WHAT THE LIMIT SHOULD HAVE BEEN SET FROM
   request is not a fixed-size object: it grows for as long as it runs, so a set
   that fits on the way in does not fit on the way out.
 
-  The plateau sits at max batch 8, between 6 and 12, which is what this
-  arithmetic predicts. Sizing the limit on terminal occupancy rather than
-  admission-time occupancy is what watermarking exists to approximate.
+  Stepping the limit one at a time, the first eviction appears at max batch
+  7: the first setting above the 6 that fit at completion, and well below
+  the 12 that fit at admission. That is where this arithmetic says thrash should
+  start. Sizing the limit on terminal occupancy rather than admission-time
+  occupancy is what watermarking exists to approximate.
 
 
 ==========================================================================
@@ -150,7 +160,7 @@ RESULT
 ==========================================================================
 
   Raising the admission limit from 8 to 32 changed completions by zero, raised
-  evictions from 16 to 97, and reprocessed 24,832 prompt tokens to deliver
+  evictions from 17 to 215, and reprocessed 55,040 prompt tokens to deliver
   2,409 tokens of output.
 
   A serving system that admits work it cannot hold does not degrade gracefully.
