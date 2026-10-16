@@ -1,0 +1,55 @@
+E4b latency of lowering the cap to stop preemption; x4 cache; prefix cache ON; requests 400-1999; 5 seeds
+
+  homog
+    rate 0.016x4
+      no cap, no headroom          p50    253  p99    284  TTFT p99      8  preemptions/req 0.00  KV usage 0.47
+      cap 32                       p50    253  p99    283  TTFT p99      9  preemptions/req 0.00  KV usage 0.47
+      cap 24 (fits at completion)  p50    253  p99    318  TTFT p99     58  preemptions/req 0.00  KV usage 0.47
+      no cap, 5% headroom          p50    253  p99    283  TTFT p99      8  preemptions/req 0.00  KV usage 0.47
+    rate 0.020x4
+      no cap, no headroom          p50    270  p99    331  TTFT p99     36  preemptions/req 0.02  KV usage 0.62
+      cap 32                       p50    270  p99    327  TTFT p99     45  preemptions/req 0.00  KV usage 0.62
+      cap 24 (fits at completion)  p50    274  p99    466  TTFT p99    196  preemptions/req 0.00  KV usage 0.62
+      no cap, 5% headroom          p50    270  p99    329  TTFT p99     46  preemptions/req 0.00  KV usage 0.62
+    rate 0.024x4
+      no cap, no headroom          p50    297  p99    514  TTFT p99    203  preemptions/req 0.21  KV usage 0.81
+      cap 32                       p50    293  p99    483  TTFT p99    189  preemptions/req 0.04  KV usage 0.79
+      cap 24 (fits at completion)  p50   1395  p99   2185  TTFT p99   1915  preemptions/req 0.00  KV usage 0.70
+      no cap, 5% headroom          p50    293  p99    490  TTFT p99    195  preemptions/req 0.04  KV usage 0.79
+    rate 0.026x4
+      no cap, no headroom          p50    524  p99    848  TTFT p99    520  preemptions/req 0.48  KV usage 0.91
+      cap 32                       p50    454  p99    728  TTFT p99    434  preemptions/req 0.10  KV usage 0.87
+      cap 24 (fits at completion)  p50   2316  p99   3707  TTFT p99   3437  preemptions/req 0.00  KV usage 0.70
+      no cap, 5% headroom          p50    430  p99    740  TTFT p99    434  preemptions/req 0.15  KV usage 0.88
+    rate 0.028x4
+      no cap, no headroom          p50   1187  p99   1873  TTFT p99   1546  preemptions/req 0.57  KV usage 0.93
+      cap 32                       p50    828  p99   1285  TTFT p99    991  preemptions/req 0.03  KV usage 0.91
+      cap 24 (fits at completion)  p50   3119  p99   5042  TTFT p99   4772  preemptions/req 0.00  KV usage 0.70
+      no cap, 5% headroom          p50   1035  p99   1639  TTFT p99   1334  preemptions/req 0.21  KV usage 0.90
+
+  chat
+    rate 0.016x4
+      no cap, no headroom          p50    149  p99   1183  TTFT p99      9  preemptions/req 0.00  KV usage 0.46
+      cap 32                       p50    149  p99   1183  TTFT p99      9  preemptions/req 0.00  KV usage 0.46
+      cap 24 (fits at completion)  p50    149  p99   1184  TTFT p99     16  preemptions/req 0.00  KV usage 0.46
+      no cap, 5% headroom          p50    149  p99   1184  TTFT p99      9  preemptions/req 0.00  KV usage 0.46
+    rate 0.020x4
+      no cap, no headroom          p50    159  p99   1248  TTFT p99     38  preemptions/req 0.03  KV usage 0.61
+      cap 32                       p50    159  p99   1248  TTFT p99     38  preemptions/req 0.03  KV usage 0.61
+      cap 24 (fits at completion)  p50    165  p99   1251  TTFT p99    100  preemptions/req 0.01  KV usage 0.60
+      no cap, 5% headroom          p50    159  p99   1248  TTFT p99     56  preemptions/req 0.00  KV usage 0.61
+    rate 0.024x4
+      no cap, no headroom          p50    202  p99   1340  TTFT p99    234  preemptions/req 0.20  KV usage 0.77
+      cap 32                       p50    202  p99   1340  TTFT p99    232  preemptions/req 0.18  KV usage 0.77
+      cap 24 (fits at completion)  p50    333  p99   1397  TTFT p99    467  preemptions/req 0.02  KV usage 0.75
+      no cap, 5% headroom          p50    200  p99   1328  TTFT p99    225  preemptions/req 0.01  KV usage 0.76
+    rate 0.026x4
+      no cap, no headroom          p50    359  p99   1505  TTFT p99    470  preemptions/req 0.47  KV usage 0.87
+      cap 32                       p50    348  p99   1483  TTFT p99    454  preemptions/req 0.37  KV usage 0.86
+      cap 24 (fits at completion)  p50    867  p99   2011  TTFT p99   1156  preemptions/req 0.02  KV usage 0.78
+      no cap, 5% headroom          p50    314  p99   1434  TTFT p99    411  preemptions/req 0.02  KV usage 0.84
+    rate 0.028x4
+      no cap, no headroom          p50    721  p99   1912  TTFT p99    919  preemptions/req 0.65  KV usage 0.92
+      cap 32                       p50    699  p99   1872  TTFT p99    889  preemptions/req 0.47  KV usage 0.91
+      cap 24 (fits at completion)  p50   1560  p99   3017  TTFT p99   2355  preemptions/req 0.02  KV usage 0.78
+      no cap, 5% headroom          p50    620  p99   1745  TTFT p99    796  preemptions/req 0.03  KV usage 0.89

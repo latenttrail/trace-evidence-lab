@@ -12,7 +12,7 @@ not claim that one GPU, engine, or configuration is universally best.
 |---|---|---|
 | [`gpu-upgrade`](experiments/gpu-upgrade/) | Did a newer GPU improve the response, or did the workload bottleneck live elsewhere? | Recorded result + checked receipt |
 | [`two-clocks`](experiments/two-clocks/) | When load rises, did generation slow down or did requests wait longer to start? | Recorded result + checked receipt |
-| [`preemption-thrash`](experiments/preemption-thrash/) | If the KV cache is what runs out, what does raising the admission limit actually buy? | Teaching miniature, simulator-derived |
+| [`preemption-thrash`](experiments/preemption-thrash/extended/) | Does driving preemptions to zero make serving faster? (In this simulator: no, it was the slowest setting tested.) | Teaching miniature, simulator-derived |
 | [`long-prompt-stall`](experiments/long-prompt-stall/) | What does one arriving long prompt cost the conversations already in flight? | Teaching miniature, simulator-derived |
 
 ## Evidence classes

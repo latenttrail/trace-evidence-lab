@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="950" height="410" viewBox="0 0 950 410" role="img"><title>When over-admission pays</title><desc>Ratio of saturation throughput with no admission cap to throughput with cap 6, versus the cost of one re-prefill, for two resume semantics and two workloads.</desc><rect width="950" height="410" fill="#fcfcfb"/><text x="64" y="58" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Uniform requests (256 in / 200 out)</text>
+<line x1="64" x2="452" y1="354.0" y2="354.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="358.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">0.6</text>
+<line x1="64" x2="452" y1="279.3" y2="279.3" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="283.3" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">0.8</text>
+<line x1="64" x2="452" y1="204.7" y2="204.7" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="208.7" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">1.0</text>
+<line x1="64" x2="452" y1="130.0" y2="130.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="134.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">1.2</text>
+<text x="64.0" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.0</text>
+<text x="158.7" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">2.5</text>
+<text x="253.5" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">5.0</text>
+<text x="348.2" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">7.5</text>
+<text x="442.9" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">10.0</text>
+<line x1="64" x2="452" y1="354" y2="354" stroke="#8a8984" stroke-width="1"/>
+<text x="258.0" y="394" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">cost of re-prefilling a 256-token prompt (decode steps)</text>
+<text transform="translate(16,214.0) rotate(-90)" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">throughput: unlimited ÷ cap 6</text>
+<line x1="64" x2="452" y1="204.7" y2="204.7" stroke="#52514e" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="448" y="198.7" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#52514e" text-anchor="end">break-even</text>
+<path d="M64.0,97.3 L83.4,112.1 L102.8,126.1 L161.0,154.9 L258.0,190.4 L452.0,242.4" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="64.0" cy="97.3" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 0.00 steps: unlimited / cap-6 throughput = 1.29</title></circle>
+<circle cx="83.4" cy="112.1" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 0.51 steps: unlimited / cap-6 throughput = 1.25</title></circle>
+<circle cx="102.8" cy="126.1" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 1.02 steps: unlimited / cap-6 throughput = 1.21</title></circle>
+<circle cx="161.0" cy="154.9" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 2.56 steps: unlimited / cap-6 throughput = 1.13</title></circle>
+<circle cx="258.0" cy="190.4" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 5.12 steps: unlimited / cap-6 throughput = 1.04</title></circle>
+<circle cx="452.0" cy="242.4" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 10.24 steps: unlimited / cap-6 throughput = 0.90</title></circle>
+<path d="M64.0,197.7 L83.4,212.4 L102.8,225.3 L161.0,259.8 L258.0,298.6 L452.0,344.3" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round"/>
+<rect x="59.8" y="193.5" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 0.00 steps: unlimited / cap-6 throughput = 1.02</title></rect>
+<rect x="79.2" y="208.2" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 0.51 steps: unlimited / cap-6 throughput = 0.98</title></rect>
+<rect x="98.6" y="221.1" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 1.02 steps: unlimited / cap-6 throughput = 0.94</title></rect>
+<rect x="156.8" y="255.6" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 2.56 steps: unlimited / cap-6 throughput = 0.85</title></rect>
+<rect x="253.8" y="294.4" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 5.12 steps: unlimited / cap-6 throughput = 0.75</title></rect>
+<rect x="447.8" y="340.1" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 10.24 steps: unlimited / cap-6 throughput = 0.63</title></rect><text x="544" y="58" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Chat-like mix</text>
+<line x1="544" x2="932" y1="354.0" y2="354.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="358.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">0.6</text>
+<line x1="544" x2="932" y1="279.3" y2="279.3" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="283.3" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">0.8</text>
+<line x1="544" x2="932" y1="204.7" y2="204.7" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="208.7" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">1.0</text>
+<line x1="544" x2="932" y1="130.0" y2="130.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="134.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">1.2</text>
+<text x="544.0" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.0</text>
+<text x="638.7" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">2.5</text>
+<text x="733.5" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">5.0</text>
+<text x="828.2" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">7.5</text>
+<text x="922.9" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">10.0</text>
+<line x1="544" x2="932" y1="354" y2="354" stroke="#8a8984" stroke-width="1"/>
+<text x="738.0" y="394" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">cost of re-prefilling a 256-token prompt (decode steps)</text>
+<text transform="translate(496,214.0) rotate(-90)" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">throughput: unlimited ÷ cap 6</text>
+<line x1="544" x2="932" y1="204.7" y2="204.7" stroke="#52514e" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="928" y="198.7" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#52514e" text-anchor="end">break-even</text>
+<path d="M544.0,128.2 L563.4,146.8 L582.8,162.0 L641.0,202.7 L738.0,243.1 L932.0,285.3" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="544.0" cy="128.2" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 0.00 steps: unlimited / cap-6 throughput = 1.20</title></circle>
+<circle cx="563.4" cy="146.8" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 0.51 steps: unlimited / cap-6 throughput = 1.16</title></circle>
+<circle cx="582.8" cy="162.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 1.02 steps: unlimited / cap-6 throughput = 1.11</title></circle>
+<circle cx="641.0" cy="202.7" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 2.56 steps: unlimited / cap-6 throughput = 1.01</title></circle>
+<circle cx="738.0" cy="243.1" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 5.12 steps: unlimited / cap-6 throughput = 0.90</title></circle>
+<circle cx="932.0" cy="285.3" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, 256-token re-prefill = 10.24 steps: unlimited / cap-6 throughput = 0.78</title></circle>
+<path d="M544.0,146.5 L563.4,158.9 L582.8,175.2 L641.0,212.2 L738.0,249.7 L932.0,299.7" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round"/>
+<rect x="539.8" y="142.3" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 0.00 steps: unlimited / cap-6 throughput = 1.16</title></rect>
+<rect x="559.2" y="154.7" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 0.51 steps: unlimited / cap-6 throughput = 1.12</title></rect>
+<rect x="578.6" y="171.0" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 1.02 steps: unlimited / cap-6 throughput = 1.08</title></rect>
+<rect x="636.8" y="208.0" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 2.56 steps: unlimited / cap-6 throughput = 0.98</title></rect>
+<rect x="733.8" y="245.5" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 5.12 steps: unlimited / cap-6 throughput = 0.88</title></rect>
+<rect x="927.8" y="295.5" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, 256-token re-prefill = 10.24 steps: unlimited / cap-6 throughput = 0.75</title></rect><circle cx="69.0" cy="22.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume</title></circle>
+<text x="80" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">vLLM-like resume</text>
+<rect x="202.8" y="17.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics</title></rect>
+<text x="218" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">original semantics</text></svg>

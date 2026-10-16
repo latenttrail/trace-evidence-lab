@@ -1,0 +1,27 @@
+E7  which observable tracks lost throughput? (from E3; 10 admission policies x 3 workloads x 2 scales x 2 prefix modes)
+    shortfall = 1 - throughput / best policy's throughput for the same workload, scale and prefix mode
+    Spearman rank correlation with shortfall (+1 = higher metric always means more throughput lost)
+
+  all policies (n=120)
+    preemptions per request   (vllm:num_preemptions / requests)      rho = -0.45
+    KV cache usage            (vllm:kv_cache_usage_perc)             rho = -0.66
+    share of time recomputing evicted KV  (no direct vLLM metric)    rho = -0.42
+
+  optimistic policies only (headroom 0-30%, no static cap, no reserve) (n=72)
+    preemptions per request   (vllm:num_preemptions / requests)      rho = -0.44
+    KV cache usage            (vllm:kv_cache_usage_perc)             rho = -0.62
+    share of time recomputing evicted KV  (no direct vLLM metric)    rho = -0.39
+
+  Counterexamples (same workload, scale, prefix mode):
+    x1 prefix off bimodal  best: headroom 10%          0.74 preemptions/req, KV 0.89 | fewest preemptions: reserve max_tokens    0.00/req, KV 0.35, 57.0% below best
+    x1 prefix off chat     best: headroom 10%          0.22 preemptions/req, KV 0.89 | fewest preemptions: reserve max_tokens    0.00/req, KV 0.26, 68.3% below best
+    x1 prefix off homog    best: headroom 2%           0.62 preemptions/req, KV 0.93 | fewest preemptions: cap 6 (x scale)       0.00/req, KV 0.70, 20.4% below best
+    x1 prefix on  bimodal  best: headroom 2%           0.50 preemptions/req, KV 0.92 | fewest preemptions: reserve max_tokens    0.00/req, KV 0.35, 59.5% below best
+    x1 prefix on  chat     best: headroom 2%           0.56 preemptions/req, KV 0.93 | fewest preemptions: reserve max_tokens    0.00/req, KV 0.26, 69.5% below best
+    x1 prefix on  homog    best: headroom 5%           0.47 preemptions/req, KV 0.93 | fewest preemptions: cap 6 (x scale)       0.00/req, KV 0.70, 21.5% below best
+    x4 prefix off bimodal  best: headroom 5%           0.10 preemptions/req, KV 0.95 | fewest preemptions: reserve max_tokens    0.00/req, KV 0.41, 48.8% below best
+    x4 prefix off chat     best: headroom 5%           0.04 preemptions/req, KV 0.95 | fewest preemptions: headroom 20%          0.00/req, KV 0.80, 10.6% below best
+    x4 prefix off homog    best: headroom 5%           0.24 preemptions/req, KV 0.91 | fewest preemptions: reserve max_tokens    0.00/req, KV 0.76, 10.6% below best
+    x4 prefix on  bimodal  best: headroom 2%           0.24 preemptions/req, KV 0.97 | fewest preemptions: reserve max_tokens    0.00/req, KV 0.41, 49.3% below best
+    x4 prefix on  chat     best: headroom 2%           0.20 preemptions/req, KV 0.97 | fewest preemptions: headroom 20%          0.00/req, KV 0.80, 11.1% below best
+    x4 prefix on  homog    best: headroom 2%           0.36 preemptions/req, KV 0.93 | fewest preemptions: reserve max_tokens    0.00/req, KV 0.76, 10.9% below best

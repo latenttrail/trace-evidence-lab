@@ -1,0 +1,37 @@
+E5  anatomy of an eviction; chat workload; optimistic admission (no headroom); 5 seeds
+
+  cache x1, rate 0.015 x1
+    vLLM-like (newest victim, requeue front)   evictions/req  0.21 | zero-progress  79% | mid-prefill  64% | top-1% of requests hold  88% | worst request  92x | recompute 0.6% | p50   139 p99   928
+    requeue to back                            evictions/req  0.17 | zero-progress  73% | mid-prefill  66% | top-1% of requests hold  83% | worst request 137x | recompute 0.5% | p50   138 p99   901
+    victim = least progress                    evictions/req  0.22 | zero-progress  75% | mid-prefill  53% | top-1% of requests hold  80% | worst request 114x | recompute 0.6% | p50   139 p99   926
+    least progress + requeue back              evictions/req  0.11 | zero-progress  54% | mid-prefill  41% | top-1% of requests hold  67% | worst request  44x | recompute 0.2% | p50   136 p99   899
+
+  cache x1, rate 0.022 x1
+    vLLM-like (newest victim, requeue front)   evictions/req  0.72 | zero-progress  81% | mid-prefill  73% | top-1% of requests hold  68% | worst request 244x | recompute 2.7% | p50   167 p99  1110
+    requeue to back                            evictions/req  0.39 | zero-progress  62% | mid-prefill  55% | top-1% of requests hold  56% | worst request 101x | recompute 1.3% | p50   152 p99   989
+    victim = least progress                    evictions/req  0.46 | zero-progress  66% | mid-prefill  51% | top-1% of requests hold  53% | worst request  71x | recompute 1.4% | p50   157 p99  1010
+    least progress + requeue back              evictions/req  0.32 | zero-progress  51% | mid-prefill  43% | top-1% of requests hold  48% | worst request  74x | recompute 0.9% | p50   152 p99   994
+
+  cache x1, rate 0.026 x1
+    vLLM-like (newest victim, requeue front)   evictions/req  1.26 | zero-progress  80% | mid-prefill  72% | top-1% of requests hold  59% | worst request 220x | recompute 5.4% | p50   255 p99  1225
+    requeue to back                            evictions/req  0.54 | zero-progress  57% | mid-prefill  52% | top-1% of requests hold  45% | worst request 132x | recompute 1.9% | p50   175 p99  1084
+    victim = least progress                    evictions/req  1.01 | zero-progress  69% | mid-prefill  55% | top-1% of requests hold  49% | worst request 240x | recompute 3.7% | p50   224 p99  1185
+    least progress + requeue back              evictions/req  0.46 | zero-progress  36% | mid-prefill  29% | top-1% of requests hold  27% | worst request  59x | recompute 1.2% | p50   168 p99  1059
+
+  cache x4, rate 0.015 x4
+    vLLM-like (newest victim, requeue front)   evictions/req  0.00 | zero-progress  28% | mid-prefill  28% | top-1% of requests hold  40% | worst request   9x | recompute 0.0% | p50   147 p99  1168
+    requeue to back                            evictions/req  0.00 | zero-progress  28% | mid-prefill  28% | top-1% of requests hold  40% | worst request  12x | recompute 0.0% | p50   147 p99  1168
+    victim = least progress                    evictions/req  0.00 | zero-progress   0% | mid-prefill   0% | top-1% of requests hold  40% | worst request   2x | recompute 0.0% | p50   147 p99  1168
+    least progress + requeue back              evictions/req  0.00 | zero-progress   0% | mid-prefill   0% | top-1% of requests hold  40% | worst request   2x | recompute 0.0% | p50   147 p99  1168
+
+  cache x4, rate 0.022 x4
+    vLLM-like (newest victim, requeue front)   evictions/req  0.16 | zero-progress  48% | mid-prefill  37% | top-1% of requests hold  38% | worst request  33x | recompute 1.6% | p50   185 p99  1303
+    requeue to back                            evictions/req  0.15 | zero-progress  42% | mid-prefill  29% | top-1% of requests hold  38% | worst request  29x | recompute 1.3% | p50   180 p99  1309
+    victim = least progress                    evictions/req  0.16 | zero-progress  30% | mid-prefill  23% | top-1% of requests hold  46% | worst request  49x | recompute 1.0% | p50   179 p99  1295
+    least progress + requeue back              evictions/req  0.16 | zero-progress  24% | mid-prefill  14% | top-1% of requests hold  42% | worst request  12x | recompute 0.8% | p50   175 p99  1297
+
+  cache x4, rate 0.026 x4
+    vLLM-like (newest victim, requeue front)   evictions/req  0.81 | zero-progress  52% | mid-prefill  42% | top-1% of requests hold  21% | worst request  97x | recompute 8.8% | p50   721 p99  2011
+    requeue to back                            evictions/req  0.80 | zero-progress  43% | mid-prefill  30% | top-1% of requests hold  15% | worst request  42x | recompute 7.5% | p50   507 p99  2550
+    victim = least progress                    evictions/req  0.93 | zero-progress  33% | mid-prefill  25% | top-1% of requests hold  18% | worst request  66x | recompute 6.3% | p50   555 p99  1782
+    least progress + requeue back              evictions/req  0.85 | zero-progress  27% | mid-prefill  17% | top-1% of requests hold  16% | worst request  25x | recompute 4.7% | p50   394 p99  2364

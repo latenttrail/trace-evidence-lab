@@ -1,0 +1,19 @@
+HEADLINE: per-seed paired ratios, 'cap 24 (fits at completion)' / 'no cap, no headroom'
+x4 cache, prefix cache ON, 5 seeds (0-4), requests 400-1999 of 2400 measured
+
+  homog  rate 0.020x4: p50 x1.02 [1.01-1.02]   p99 x1.42 [1.26-1.59]   preemptions/req 0.00 vs 0.02   KV usage 0.62 vs 0.62
+  homog  rate 0.024x4: p50 x4.69 [3.55-5.63]   p99 x4.27 [3.48-5.15]   preemptions/req 0.00 vs 0.21   KV usage 0.70 vs 0.81
+  homog  rate 0.026x4: p50 x4.63 [3.19-5.25]   p99 x4.45 [3.76-5.22]   preemptions/req 0.00 vs 0.48   KV usage 0.70 vs 0.91
+  homog  rate 0.028x4: p50 x2.68 [2.32-3.18]   p99 x2.72 [2.43-3.09]   preemptions/req 0.00 vs 0.57   KV usage 0.70 vs 0.93
+  chat   rate 0.020x4: p50 x1.04 [1.02-1.08]   p99 x1.00 [1.00-1.01]   preemptions/req 0.01 vs 0.03   KV usage 0.60 vs 0.61
+  chat   rate 0.024x4: p50 x1.62 [1.42-1.99]   p99 x1.04 [1.00-1.14]   preemptions/req 0.02 vs 0.20   KV usage 0.75 vs 0.77
+  chat   rate 0.026x4: p50 x2.50 [2.02-3.16]   p99 x1.33 [1.18-1.53]   preemptions/req 0.02 vs 0.47   KV usage 0.78 vs 0.87
+  chat   rate 0.028x4: p50 x2.52 [1.59-3.36]   p99 x1.62 [1.32-1.85]   preemptions/req 0.02 vs 0.65   KV usage 0.78 vs 0.92
+
+cap 24 median latency vs the best of the four policies at each load:
+  homog  rate 0.024x4: best = cap 32                 p50    293;  cap 24 p50   1395  (x4.8)
+  homog  rate 0.026x4: best = no cap, 5% headroom    p50    430;  cap 24 p50   2316  (x5.4)
+  homog  rate 0.028x4: best = cap 32                 p50    828;  cap 24 p50   3119  (x3.8)
+  chat   rate 0.024x4: best = no cap, 5% headroom    p50    200;  cap 24 p50    333  (x1.7)
+  chat   rate 0.026x4: best = no cap, 5% headroom    p50    314;  cap 24 p50    867  (x2.8)
+  chat   rate 0.028x4: best = no cap, 5% headroom    p50    620;  cap 24 p50   1560  (x2.5)

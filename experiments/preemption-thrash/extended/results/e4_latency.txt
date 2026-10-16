@@ -1,0 +1,16 @@
+E4  latency by offered load; x4 cache; prefix cache ON; requests 400-1999 measured; 5 seeds
+    ratio = mean of per-seed (5% headroom / 0% headroom)
+
+  homog
+    rate 0.016x4: p50    253 ->    253 (x1.00)  p99    284 ->    283 (x0.99)  evictions/req 0.00 -> 0.00  KV usage 0.47 -> 0.47
+    rate 0.020x4: p50    270 ->    270 (x1.00)  p99    331 ->    329 (x0.99)  evictions/req 0.02 -> 0.00  KV usage 0.62 -> 0.62
+    rate 0.024x4: p50    297 ->    293 (x0.99)  p99    514 ->    490 (x0.95)  evictions/req 0.21 -> 0.04  KV usage 0.81 -> 0.79
+    rate 0.026x4: p50    524 ->    430 (x0.83)  p99    848 ->    740 (x0.88)  evictions/req 0.48 -> 0.15  KV usage 0.91 -> 0.88
+    rate 0.028x4: p50   1187 ->   1035 (x0.87)  p99   1873 ->   1639 (x0.87)  evictions/req 0.57 -> 0.21  KV usage 0.93 -> 0.90
+
+  chat
+    rate 0.016x4: p50    149 ->    149 (x1.00)  p99   1183 ->   1184 (x1.00)  evictions/req 0.00 -> 0.00  KV usage 0.46 -> 0.46
+    rate 0.020x4: p50    159 ->    159 (x1.00)  p99   1248 ->   1248 (x1.00)  evictions/req 0.03 -> 0.00  KV usage 0.61 -> 0.61
+    rate 0.024x4: p50    202 ->    200 (x0.99)  p99   1340 ->   1328 (x0.99)  evictions/req 0.20 -> 0.01  KV usage 0.77 -> 0.76
+    rate 0.026x4: p50    359 ->    314 (x0.89)  p99   1505 ->   1434 (x0.96)  evictions/req 0.47 -> 0.02  KV usage 0.87 -> 0.84
+    rate 0.028x4: p50    721 ->    620 (x0.86)  p99   1912 ->   1745 (x0.91)  evictions/req 0.65 -> 0.03  KV usage 0.92 -> 0.89

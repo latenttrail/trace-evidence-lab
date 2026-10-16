@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" role="img"><title>Eviction semantics decide the sign</title><desc>Throughput versus admission cap for the original burst workload, under the original simulator semantics and vLLM-like resume semantics, both with step costs.</desc><rect width="860" height="430" fill="#fcfcfb"/><text x="64" y="58" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Same 24 requests, same cache: does admitting more help?</text>
+<line x1="64" x2="610" y1="374.0" y2="374.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="378.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">0</text>
+<line x1="64" x2="610" y1="288.3" y2="288.3" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="292.3" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">2</text>
+<line x1="64" x2="610" y1="202.6" y2="202.6" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="206.6" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">4</text>
+<line x1="64" x2="610" y1="116.9" y2="116.9" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="120.9" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">6</text>
+<text x="64.0" y="392" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0</text>
+<text x="177.8" y="392" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">5</text>
+<text x="291.5" y="392" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">10</text>
+<text x="405.2" y="392" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">15</text>
+<text x="519.0" y="392" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">20</text>
+<line x1="64" x2="610" y1="374" y2="374" stroke="#8a8984" stroke-width="1"/>
+<text x="337.0" y="414" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">admission cap (max running requests)</text>
+<text transform="translate(16,224.0) rotate(-90)" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">output tokens per time unit</text>
+<line x1="200.5" x2="200.5" y1="74" y2="374" stroke="#52514e" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="205.5" y="86" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#52514e">cap 6 = all fit at completion</text>
+<path d="M86.8,332.0 L109.5,291.3 L155.0,214.2 L177.8,184.7 L200.5,143.3 L223.2,143.0 L246.0,146.9 L268.8,150.3 L291.5,153.2 L337.0,155.0 L428.0,155.0 L610.0,155.0" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round"/>
+<rect x="82.5" y="327.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 1: 0.98 tok/u, 0 evictions</title></rect>
+<rect x="105.3" y="287.1" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 2: 1.93 tok/u, 0 evictions</title></rect>
+<rect x="150.8" y="210.0" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 4: 3.73 tok/u, 0 evictions</title></rect>
+<rect x="173.6" y="180.5" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 5: 4.42 tok/u, 0 evictions</title></rect>
+<rect x="196.3" y="139.1" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 6: 5.38 tok/u, 0 evictions</title></rect>
+<rect x="219.1" y="138.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 7: 5.39 tok/u, 3 evictions</title></rect>
+<rect x="241.8" y="142.7" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 8: 5.30 tok/u, 19 evictions</title></rect>
+<rect x="264.6" y="146.1" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 9: 5.22 tok/u, 30 evictions</title></rect>
+<rect x="287.3" y="149.0" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 10: 5.15 tok/u, 41 evictions</title></rect>
+<rect x="332.8" y="150.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 12: 5.11 tok/u, 48 evictions</title></rect>
+<rect x="423.8" y="150.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 16: 5.11 tok/u, 48 evictions</title></rect>
+<rect x="605.8" y="150.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics, cap 24: 5.11 tok/u, 48 evictions</title></rect>
+<text x="618.0" y="159.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#0b0b0b" text-anchor="start">original semantics</text>
+<path d="M86.8,332.0 L109.5,291.3 L155.0,214.2 L177.8,184.7 L200.5,143.3 L223.2,142.2 L246.0,144.1 L268.8,112.4 L291.5,110.5 L337.0,109.8 L428.0,109.8 L610.0,109.8" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="86.8" cy="332.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 1: 0.98 tok/u, 0 evictions</title></circle>
+<circle cx="109.5" cy="291.3" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 2: 1.93 tok/u, 0 evictions</title></circle>
+<circle cx="155.0" cy="214.2" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 4: 3.73 tok/u, 0 evictions</title></circle>
+<circle cx="177.8" cy="184.7" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 5: 4.42 tok/u, 0 evictions</title></circle>
+<circle cx="200.5" cy="143.3" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 6: 5.38 tok/u, 0 evictions</title></circle>
+<circle cx="223.2" cy="142.2" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 7: 5.41 tok/u, 3 evictions</title></circle>
+<circle cx="246.0" cy="144.1" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 8: 5.36 tok/u, 9 evictions</title></circle>
+<circle cx="268.8" cy="112.4" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 9: 6.10 tok/u, 16 evictions</title></circle>
+<circle cx="291.5" cy="110.5" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 10: 6.15 tok/u, 27 evictions</title></circle>
+<circle cx="337.0" cy="109.8" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 12: 6.16 tok/u, 27 evictions</title></circle>
+<circle cx="428.0" cy="109.8" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 16: 6.16 tok/u, 27 evictions</title></circle>
+<circle cx="610.0" cy="109.8" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume, cap 24: 6.16 tok/u, 27 evictions</title></circle>
+<text x="618.0" y="113.8" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#0b0b0b" text-anchor="start">vLLM-like resume</text><circle cx="69.0" cy="22.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>vLLM-like resume</title></circle>
+<text x="80" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">vLLM-like resume</text>
+<rect x="202.8" y="17.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>original semantics</title></rect>
+<text x="218" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">original semantics</text></svg>

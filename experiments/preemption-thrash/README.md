@@ -1,5 +1,10 @@
 # Over-admission does not reduce completions. It converts them into repeated work.
 
+> **Superseded by [`extended/`](extended/).** An audit found this simulator made recomputation free and
+> discarded generated tokens on eviction. Under vLLM-like semantics the conclusion below reverses: the
+> "fits at completion" limit removes preemption and is the slowest setting tested. This experiment is
+> kept unchanged because `extended/` audits it.
+
 **Evidence class:** Teaching miniature — simulator-derived, **not** Measured by us
 **Provenance:** my own run against [`sim/serving_sim.py`](../../sim/serving_sim.py)
 

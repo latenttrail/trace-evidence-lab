@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="410" viewBox="0 0 960 410" role="img"><title>Eliminating preemption, at a price</title><desc>Median latency versus offered load for three admission policies, x4 cache, prefix cache on, mean of 5 seeds.</desc><rect width="960" height="410" fill="#fcfcfb"/><text x="64" y="58" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Uniform requests (256 in / 200 out)</text>
+<line x1="64" x2="452" y1="354.0" y2="354.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="358.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">0</text>
+<line x1="64" x2="452" y1="274.0" y2="274.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="278.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">1000</text>
+<line x1="64" x2="452" y1="194.0" y2="194.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="198.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">2000</text>
+<line x1="64" x2="452" y1="114.0" y2="114.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="118.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">3000</text>
+<text x="112.5" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.07</text>
+<text x="193.3" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.08</text>
+<text x="274.2" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.09</text>
+<text x="355.0" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.10</text>
+<text x="435.8" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.11</text>
+<line x1="64" x2="452" y1="354" y2="354" stroke="#8a8984" stroke-width="1"/>
+<text x="258.0" y="394" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">offered load (requests per time unit)</text>
+<text transform="translate(16,214.0) rotate(-90)" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">median latency (time units)</text>
+<path d="M64.0,333.7 L193.3,332.4 L322.7,330.2 L387.3,312.1 L452.0,259.0" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="64.0" cy="333.7" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.064 req/u: median latency 253u, 0.00 preemptions per request, KV usage 0.47</title></circle>
+<circle cx="193.3" cy="332.4" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.080 req/u: median latency 270u, 0.02 preemptions per request, KV usage 0.62</title></circle>
+<circle cx="322.7" cy="330.2" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.096 req/u: median latency 297u, 0.21 preemptions per request, KV usage 0.81</title></circle>
+<circle cx="387.3" cy="312.1" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.104 req/u: median latency 524u, 0.48 preemptions per request, KV usage 0.91</title></circle>
+<circle cx="452.0" cy="259.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.112 req/u: median latency 1187u, 0.57 preemptions per request, KV usage 0.93</title></circle>
+<path d="M64.0,333.7 L193.3,332.1 L322.7,242.4 L387.3,168.7 L452.0,104.5" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round"/>
+<rect x="59.8" y="329.5" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.064 req/u: median latency 253u, 0.00 preemptions per request, KV usage 0.47</title></rect>
+<rect x="189.1" y="327.9" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.080 req/u: median latency 274u, 0.00 preemptions per request, KV usage 0.62</title></rect>
+<rect x="318.5" y="238.2" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.096 req/u: median latency 1395u, 0.00 preemptions per request, KV usage 0.70</title></rect>
+<rect x="383.1" y="164.5" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.104 req/u: median latency 2316u, 0.00 preemptions per request, KV usage 0.70</title></rect>
+<rect x="447.8" y="100.3" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.112 req/u: median latency 3119u, 0.00 preemptions per request, KV usage 0.70</title></rect>
+<path d="M64.0,333.7 L193.3,332.4 L322.7,330.6 L387.3,319.6 L452.0,271.2" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="64.0,328.2 69.0,337.7 59.0,337.7" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.064 req/u: median latency 253u, 0.00 preemptions per request, KV usage 0.47</title></polygon>
+<polygon points="193.3,326.9 198.3,336.4 188.3,336.4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.080 req/u: median latency 270u, 0.00 preemptions per request, KV usage 0.62</title></polygon>
+<polygon points="322.7,325.1 327.7,334.6 317.7,334.6" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.096 req/u: median latency 293u, 0.04 preemptions per request, KV usage 0.79</title></polygon>
+<polygon points="387.3,314.1 392.3,323.6 382.3,323.6" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.104 req/u: median latency 430u, 0.15 preemptions per request, KV usage 0.88</title></polygon>
+<polygon points="452.0,265.7 457.0,275.2 447.0,275.2" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.112 req/u: median latency 1035u, 0.21 preemptions per request, KV usage 0.90</title></polygon><text x="544" y="58" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Chat-like mix</text>
+<line x1="544" x2="932" y1="354.0" y2="354.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="358.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">0</text>
+<line x1="544" x2="932" y1="271.6" y2="271.6" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="275.6" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">500</text>
+<line x1="544" x2="932" y1="189.3" y2="189.3" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="193.3" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">1000</text>
+<line x1="544" x2="932" y1="106.9" y2="106.9" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="110.9" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">1500</text>
+<text x="592.5" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.07</text>
+<text x="673.3" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.08</text>
+<text x="754.2" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.09</text>
+<text x="835.0" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.10</text>
+<text x="915.8" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0.11</text>
+<line x1="544" x2="932" y1="354" y2="354" stroke="#8a8984" stroke-width="1"/>
+<text x="738.0" y="394" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">offered load (requests per time unit)</text>
+<text transform="translate(496,214.0) rotate(-90)" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">median latency (time units)</text>
+<path d="M544.0,329.5 L673.3,327.9 L802.7,320.7 L867.3,294.8 L932.0,235.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="544.0" cy="329.5" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.064 req/u: median latency 149u, 0.00 preemptions per request, KV usage 0.46</title></circle>
+<circle cx="673.3" cy="327.9" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.080 req/u: median latency 159u, 0.03 preemptions per request, KV usage 0.61</title></circle>
+<circle cx="802.7" cy="320.7" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.096 req/u: median latency 202u, 0.20 preemptions per request, KV usage 0.77</title></circle>
+<circle cx="867.3" cy="294.8" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.104 req/u: median latency 359u, 0.47 preemptions per request, KV usage 0.87</title></circle>
+<circle cx="932.0" cy="235.2" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control, load 0.112 req/u: median latency 721u, 0.65 preemptions per request, KV usage 0.92</title></circle>
+<path d="M544.0,329.4 L673.3,326.7 L802.7,299.1 L867.3,211.2 L932.0,97.0" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round"/>
+<rect x="539.8" y="325.2" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.064 req/u: median latency 149u, 0.00 preemptions per request, KV usage 0.46</title></rect>
+<rect x="669.1" y="322.5" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.080 req/u: median latency 165u, 0.01 preemptions per request, KV usage 0.60</title></rect>
+<rect x="798.5" y="294.9" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.096 req/u: median latency 333u, 0.02 preemptions per request, KV usage 0.75</title></rect>
+<rect x="863.1" y="207.0" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.104 req/u: median latency 867u, 0.02 preemptions per request, KV usage 0.78</title></rect>
+<rect x="927.8" y="92.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions), load 0.112 req/u: median latency 1560u, 0.02 preemptions per request, KV usage 0.78</title></rect>
+<path d="M544.0,329.5 L673.3,327.8 L802.7,321.1 L867.3,302.3 L932.0,251.9" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="544.0,324.0 549.0,333.5 539.0,333.5" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.064 req/u: median latency 149u, 0.00 preemptions per request, KV usage 0.46</title></polygon>
+<polygon points="673.3,322.3 678.3,331.8 668.3,331.8" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.080 req/u: median latency 159u, 0.00 preemptions per request, KV usage 0.61</title></polygon>
+<polygon points="802.7,315.6 807.7,325.1 797.7,325.1" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.096 req/u: median latency 200u, 0.01 preemptions per request, KV usage 0.76</title></polygon>
+<polygon points="867.3,296.8 872.3,306.3 862.3,306.3" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.104 req/u: median latency 314u, 0.02 preemptions per request, KV usage 0.84</title></polygon>
+<polygon points="932.0,246.4 937.0,255.9 927.0,255.9" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission, load 0.112 req/u: median latency 620u, 0.03 preemptions per request, KV usage 0.89</title></polygon><circle cx="69.0" cy="22.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>no admission control</title></circle>
+<text x="80" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">no admission control</text>
+<rect x="230.8" y="17.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>cap = fits at completion (0 preemptions)</title></rect>
+<text x="246" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">cap = fits at completion (0 preemptions)</text>
+<polygon points="541.0,16.5 546.0,26.0 536.0,26.0" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>5% headroom at admission</title></polygon>
+<text x="552" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">5% headroom at admission</text></svg>

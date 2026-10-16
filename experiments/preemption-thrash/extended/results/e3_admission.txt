@@ -1,0 +1,142 @@
+E3  saturation throughput by admission policy (arrivals 0.2/u x scale; decode tok/u while backlogged)
+    mean ± sd over 5 seeds; 'paired vs 0%' = mean of per-seed ratios to zero headroom
+
+  cache x1, prefix cache off
+    homog
+      headroom 0%            6.70 ± 0.10  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  1.16  recompute  5.4%  KV usage 0.93  zero-progress evictions  46%
+      headroom 2%            6.88 ± 0.01  paired vs 0%  +2.8% [+1.9%, +5.7%]  | evictions/req  0.62  recompute  2.8%  KV usage 0.93  zero-progress evictions   5%
+      headroom 5%            6.87 ± 0.00  paired vs 0%  +2.6% [+1.8%, +5.3%]  | evictions/req  0.53  recompute  2.4%  KV usage 0.92  zero-progress evictions   4%
+      headroom 10%           6.76 ± 0.01  paired vs 0%  +1.0% [+0.1%, +3.5%]  | evictions/req  0.29  recompute  1.4%  KV usage 0.89  zero-progress evictions   0%
+      headroom 20%           6.45 ± 0.10  paired vs 0%  -3.7% [-6.1%, +0.0%]  | evictions/req  0.13  recompute  0.7%  KV usage 0.84  zero-progress evictions   0%
+      headroom 30%           6.19 ± 0.01  paired vs 0%  -7.6% [-8.5%, -5.0%]  | evictions/req  0.14  recompute  0.7%  KV usage 0.80  zero-progress evictions   0%
+      cap 6 (x scale)        5.48 ± 0.00  paired vs 0% -18.2% [-18.9%, -16.0%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.70  zero-progress evictions   0%
+      cap 8 (x scale)        6.52 ± 0.01  paired vs 0%  -2.6% [-3.5%, -0.1%]  | evictions/req  0.55  recompute  2.6%  KV usage 0.88  zero-progress evictions  40%
+      cap 12 (x scale)       6.70 ± 0.10  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  1.16  recompute  5.4%  KV usage 0.93  zero-progress evictions  46%
+      reserve max_tokens     5.48 ± 0.00  paired vs 0% -18.2% [-18.9%, -16.0%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.70  zero-progress evictions   0%
+    chat
+      headroom 0%            5.54 ± 0.19  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  2.35  recompute 12.0%  KV usage 0.94  zero-progress evictions  74%
+      headroom 2%            5.73 ± 0.15  paired vs 0%  +3.5% [+2.3%, +4.7%]  | evictions/req  1.56  recompute  8.7%  KV usage 0.94  zero-progress evictions  68%
+      headroom 5%            5.87 ± 0.17  paired vs 0%  +6.1% [+4.1%, +8.0%]  | evictions/req  0.93  recompute  5.5%  KV usage 0.92  zero-progress evictions  64%
+      headroom 10%           5.97 ± 0.11  paired vs 0%  +7.9% [+4.6%, +10.5%]  | evictions/req  0.22  recompute  1.3%  KV usage 0.89  zero-progress evictions  40%
+      headroom 20%           5.58 ± 0.12  paired vs 0%  +0.8% [-2.4%, +4.5%]  | evictions/req  0.03  recompute  0.2%  KV usage 0.81  zero-progress evictions  17%
+      headroom 30%           5.00 ± 0.10  paired vs 0%  -9.7% [-12.7%, -7.1%]  | evictions/req  0.01  recompute  0.0%  KV usage 0.72  zero-progress evictions   0%
+      cap 6 (x scale)        4.97 ± 0.20  paired vs 0% -10.2% [-13.9%, -5.7%]  | evictions/req  0.92  recompute  5.0%  KV usage 0.77  zero-progress evictions  89%
+      cap 8 (x scale)        5.44 ± 0.15  paired vs 0%  -1.7% [-3.2%, +0.1%]  | evictions/req  1.75  recompute 10.0%  KV usage 0.90  zero-progress evictions  83%
+      cap 12 (x scale)       5.54 ± 0.18  paired vs 0%  +0.0% [-0.3%, +0.2%]  | evictions/req  2.31  recompute 12.0%  KV usage 0.94  zero-progress evictions  74%
+      reserve max_tokens     1.89 ± 0.03  paired vs 0% -65.8% [-66.5%, -64.4%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.26  zero-progress evictions   0%
+    bimodal
+      headroom 0%            3.76 ± 0.27  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  4.81  recompute 19.1%  KV usage 0.94  zero-progress evictions  89%
+      headroom 2%            3.96 ± 0.28  paired vs 0%  +5.3% [+4.0%, +6.1%]  | evictions/req  3.37  recompute 14.6%  KV usage 0.93  zero-progress evictions  87%
+      headroom 5%            4.20 ± 0.24  paired vs 0% +11.8% [+10.2%, +14.6%]  | evictions/req  1.89  recompute  8.8%  KV usage 0.92  zero-progress evictions  84%
+      headroom 10%           4.33 ± 0.22  paired vs 0% +15.3% [+7.7%, +20.6%]  | evictions/req  0.74  recompute  4.0%  KV usage 0.89  zero-progress evictions  69%
+      headroom 20%           4.19 ± 0.21  paired vs 0% +11.7% [+5.2%, +15.9%]  | evictions/req  0.15  recompute  1.0%  KV usage 0.83  zero-progress evictions  28%
+      headroom 30%           3.87 ± 0.13  paired vs 0%  +3.1% [-4.3%, +10.7%]  | evictions/req  0.06  recompute  0.3%  KV usage 0.75  zero-progress evictions   0%
+      cap 6 (x scale)        3.69 ± 0.31  paired vs 0%  -2.0% [-3.9%, +0.9%]  | evictions/req  4.18  recompute 17.1%  KV usage 0.90  zero-progress evictions  93%
+      cap 8 (x scale)        3.76 ± 0.35  paired vs 0%  -0.1% [-4.7%, +3.9%]  | evictions/req  4.65  recompute 18.6%  KV usage 0.93  zero-progress evictions  89%
+      cap 12 (x scale)       3.76 ± 0.27  paired vs 0%  -0.1% [-0.3%, +0.0%]  | evictions/req  4.82  recompute 19.1%  KV usage 0.94  zero-progress evictions  89%
+      reserve max_tokens     1.86 ± 0.07  paired vs 0% -50.4% [-52.8%, -47.9%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.35  zero-progress evictions   0%
+
+  cache x1, prefix cache ON
+    homog
+      headroom 0%            6.93 ± 0.01  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  1.41  recompute  2.1%  KV usage 0.93  zero-progress evictions  57%
+      headroom 2%            6.94 ± 0.01  paired vs 0%  +0.2% [+0.1%, +0.4%]  | evictions/req  0.63  recompute  1.9%  KV usage 0.93  zero-progress evictions   7%
+      headroom 5%            6.97 ± 0.01  paired vs 0%  +0.6% [+0.4%, +0.8%]  | evictions/req  0.47  recompute  1.3%  KV usage 0.93  zero-progress evictions   0%
+      headroom 10%           6.76 ± 0.02  paired vs 0%  -2.4% [-2.9%, -2.2%]  | evictions/req  0.29  recompute  1.0%  KV usage 0.89  zero-progress evictions   0%
+      headroom 20%           6.57 ± 0.03  paired vs 0%  -5.1% [-5.5%, -4.6%]  | evictions/req  0.19  recompute  0.6%  KV usage 0.86  zero-progress evictions   0%
+      headroom 30%           6.07 ± 0.00  paired vs 0% -12.4% [-12.5%, -12.3%]  | evictions/req  0.11  recompute  0.2%  KV usage 0.78  zero-progress evictions   0%
+      cap 6 (x scale)        5.48 ± 0.00  paired vs 0% -21.0% [-21.1%, -20.9%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.70  zero-progress evictions   0%
+      cap 8 (x scale)        6.66 ± 0.00  paired vs 0%  -3.8% [-4.0%, -3.8%]  | evictions/req  0.53  recompute  0.8%  KV usage 0.88  zero-progress evictions  37%
+      cap 12 (x scale)       6.93 ± 0.01  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  1.41  recompute  2.1%  KV usage 0.93  zero-progress evictions  57%
+      reserve max_tokens     5.48 ± 0.00  paired vs 0% -21.0% [-21.1%, -20.9%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.70  zero-progress evictions   0%
+    chat
+      headroom 0%            6.21 ± 0.14  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  0.99  recompute  1.4%  KV usage 0.94  zero-progress evictions  39%
+      headroom 2%            6.22 ± 0.14  paired vs 0%  +0.1% [-0.1%, +0.3%]  | evictions/req  0.56  recompute  1.0%  KV usage 0.93  zero-progress evictions  17%
+      headroom 5%            6.18 ± 0.14  paired vs 0%  -0.6% [-0.6%, -0.5%]  | evictions/req  0.35  recompute  0.7%  KV usage 0.92  zero-progress evictions  16%
+      headroom 10%           6.00 ± 0.15  paired vs 0%  -3.4% [-4.0%, -2.6%]  | evictions/req  0.15  recompute  0.4%  KV usage 0.89  zero-progress evictions   9%
+      headroom 20%           5.58 ± 0.13  paired vs 0% -10.3% [-10.8%, -9.7%]  | evictions/req  0.03  recompute  0.1%  KV usage 0.81  zero-progress evictions  17%
+      headroom 30%           4.99 ± 0.10  paired vs 0% -19.6% [-20.7%, -18.5%]  | evictions/req  0.01  recompute  0.0%  KV usage 0.72  zero-progress evictions   0%
+      cap 6 (x scale)        5.22 ± 0.09  paired vs 0% -15.9% [-17.1%, -14.5%]  | evictions/req  0.16  recompute  0.2%  KV usage 0.76  zero-progress evictions  45%
+      cap 8 (x scale)        6.00 ± 0.11  paired vs 0%  -3.4% [-4.4%, -2.5%]  | evictions/req  0.52  recompute  0.7%  KV usage 0.89  zero-progress evictions  43%
+      cap 12 (x scale)       6.21 ± 0.14  paired vs 0%  -0.0% [-0.1%, +0.0%]  | evictions/req  0.99  recompute  1.4%  KV usage 0.93  zero-progress evictions  39%
+      reserve max_tokens     1.89 ± 0.03  paired vs 0% -69.5% [-70.8%, -68.8%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.26  zero-progress evictions   0%
+    bimodal
+      headroom 0%            4.59 ± 0.20  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  1.02  recompute  1.2%  KV usage 0.92  zero-progress evictions  47%
+      headroom 2%            4.60 ± 0.20  paired vs 0%  +0.2% [+0.1%, +0.4%]  | evictions/req  0.50  recompute  0.9%  KV usage 0.92  zero-progress evictions  17%
+      headroom 5%            4.56 ± 0.20  paired vs 0%  -0.5% [-0.9%, -0.0%]  | evictions/req  0.32  recompute  0.7%  KV usage 0.91  zero-progress evictions  18%
+      headroom 10%           4.49 ± 0.21  paired vs 0%  -2.1% [-2.5%, -1.6%]  | evictions/req  0.18  recompute  0.5%  KV usage 0.89  zero-progress evictions   9%
+      headroom 20%           4.19 ± 0.17  paired vs 0%  -8.6% [-9.2%, -7.7%]  | evictions/req  0.09  recompute  0.3%  KV usage 0.82  zero-progress evictions   1%
+      headroom 30%           3.84 ± 0.17  paired vs 0% -16.3% [-17.3%, -15.0%]  | evictions/req  0.06  recompute  0.2%  KV usage 0.75  zero-progress evictions   0%
+      cap 6 (x scale)        4.41 ± 0.18  paired vs 0%  -3.8% [-4.5%, -3.0%]  | evictions/req  0.52  recompute  0.7%  KV usage 0.87  zero-progress evictions  49%
+      cap 8 (x scale)        4.57 ± 0.21  paired vs 0%  -0.4% [-0.8%, +0.1%]  | evictions/req  0.82  recompute  1.0%  KV usage 0.91  zero-progress evictions  44%
+      cap 12 (x scale)       4.59 ± 0.20  paired vs 0%  -0.0% [-0.1%, +0.0%]  | evictions/req  1.01  recompute  1.2%  KV usage 0.92  zero-progress evictions  47%
+      reserve max_tokens     1.86 ± 0.07  paired vs 0% -59.4% [-60.1%, -58.8%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.35  zero-progress evictions   0%
+
+  cache x4, prefix cache off
+    homog
+      headroom 0%           20.06 ± 0.02  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  0.71  recompute  7.8%  KV usage 0.94  zero-progress evictions  33%
+      headroom 2%           20.63 ± 0.03  paired vs 0%  +2.8% [+2.7%, +3.0%]  | evictions/req  0.39  recompute  5.0%  KV usage 0.93  zero-progress evictions   6%
+      headroom 5%           20.78 ± 0.01  paired vs 0%  +3.6% [+3.5%, +3.7%]  | evictions/req  0.24  recompute  3.2%  KV usage 0.91  zero-progress evictions   0%
+      headroom 10%          20.69 ± 0.01  paired vs 0%  +3.2% [+3.1%, +3.2%]  | evictions/req  0.20  recompute  2.7%  KV usage 0.90  zero-progress evictions   0%
+      headroom 20%          19.88 ± 0.01  paired vs 0%  -0.9% [-1.0%, -0.8%]  | evictions/req  0.14  recompute  2.2%  KV usage 0.84  zero-progress evictions   0%
+      headroom 30%          18.91 ± 0.02  paired vs 0%  -5.7% [-5.8%, -5.6%]  | evictions/req  0.09  recompute  1.4%  KV usage 0.77  zero-progress evictions   0%
+      cap 6 (x scale)       17.51 ± 0.01  paired vs 0% -12.7% [-12.8%, -12.6%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.70  zero-progress evictions   0%
+      cap 8 (x scale)       19.98 ± 0.01  paired vs 0%  -0.4% [-0.5%, -0.3%]  | evictions/req  0.23  recompute  3.1%  KV usage 0.87  zero-progress evictions  14%
+      cap 12 (x scale)      20.06 ± 0.02  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  0.71  recompute  7.8%  KV usage 0.94  zero-progress evictions  33%
+      reserve max_tokens    18.58 ± 0.01  paired vs 0%  -7.4% [-7.4%, -7.3%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.76  zero-progress evictions   0%
+    chat
+      headroom 0%           18.05 ± 0.69  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  0.95  recompute 10.5%  KV usage 0.98  zero-progress evictions  52%
+      headroom 2%           19.39 ± 0.53  paired vs 0%  +7.5% [+5.9%, +8.8%]  | evictions/req  0.24  recompute  3.4%  KV usage 0.97  zero-progress evictions  25%
+      headroom 5%           19.64 ± 0.48  paired vs 0%  +8.9% [+6.9%, +10.8%]  | evictions/req  0.04  recompute  0.6%  KV usage 0.95  zero-progress evictions   7%
+      headroom 10%          19.08 ± 0.45  paired vs 0%  +5.7% [+4.1%, +7.7%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.90  zero-progress evictions   0%
+      headroom 20%          17.55 ± 0.45  paired vs 0%  -2.7% [-4.2%, -1.1%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.80  zero-progress evictions   0%
+      headroom 30%          15.90 ± 0.42  paired vs 0% -11.9% [-13.0%, -10.5%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.70  zero-progress evictions   0%
+      cap 6 (x scale)       17.32 ± 0.13  paired vs 0%  -3.9% [-7.4%, +1.0%]  | evictions/req  0.03  recompute  0.5%  KV usage 0.80  zero-progress evictions  27%
+      cap 8 (x scale)       18.31 ± 0.68  paired vs 0%  +1.5% [+0.3%, +2.5%]  | evictions/req  0.65  recompute  8.0%  KV usage 0.96  zero-progress evictions  50%
+      cap 12 (x scale)      18.08 ± 0.66  paired vs 0%  +0.2% [-0.3%, +0.9%]  | evictions/req  0.94  recompute 10.4%  KV usage 0.98  zero-progress evictions  52%
+      reserve max_tokens     8.15 ± 0.06  paired vs 0% -54.8% [-56.4%, -52.8%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.31  zero-progress evictions   0%
+    bimodal
+      headroom 0%           14.13 ± 0.46  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  1.14  recompute 13.7%  KV usage 0.98  zero-progress evictions  64%
+      headroom 2%           15.55 ± 0.38  paired vs 0% +10.1% [+8.8%, +12.8%]  | evictions/req  0.31  recompute  4.7%  KV usage 0.97  zero-progress evictions  32%
+      headroom 5%           15.82 ± 0.24  paired vs 0% +12.0% [+10.1%, +14.8%]  | evictions/req  0.10  recompute  1.8%  KV usage 0.95  zero-progress evictions   5%
+      headroom 10%          15.50 ± 0.20  paired vs 0%  +9.8% [+7.5%, +12.4%]  | evictions/req  0.05  recompute  0.9%  KV usage 0.91  zero-progress evictions   0%
+      headroom 20%          14.57 ± 0.18  paired vs 0%  +3.2% [+1.2%, +6.0%]  | evictions/req  0.03  recompute  0.5%  KV usage 0.83  zero-progress evictions   0%
+      headroom 30%          13.51 ± 0.22  paired vs 0%  -4.3% [-6.1%, -1.9%]  | evictions/req  0.02  recompute  0.3%  KV usage 0.76  zero-progress evictions   0%
+      cap 6 (x scale)       14.43 ± 0.36  paired vs 0%  +2.1% [+0.5%, +4.6%]  | evictions/req  0.66  recompute  8.7%  KV usage 0.93  zero-progress evictions  63%
+      cap 8 (x scale)       14.20 ± 0.43  paired vs 0%  +0.5% [-0.9%, +1.2%]  | evictions/req  1.04  recompute 12.8%  KV usage 0.97  zero-progress evictions  65%
+      cap 12 (x scale)      14.15 ± 0.43  paired vs 0%  +0.2% [+0.0%, +0.8%]  | evictions/req  1.12  recompute 13.5%  KV usage 0.98  zero-progress evictions  64%
+      reserve max_tokens     8.10 ± 0.05  paired vs 0% -42.6% [-44.2%, -40.3%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.41  zero-progress evictions   0%
+
+  cache x4, prefix cache ON
+    homog
+      headroom 0%           20.53 ± 0.02  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  0.59  recompute  5.6%  KV usage 0.94  zero-progress evictions  15%
+      headroom 2%           20.85 ± 0.01  paired vs 0%  +1.6% [+1.3%, +1.6%]  | evictions/req  0.36  recompute  4.0%  KV usage 0.93  zero-progress evictions   2%
+      headroom 5%           20.79 ± 0.01  paired vs 0%  +1.3% [+1.2%, +1.3%]  | evictions/req  0.24  recompute  3.1%  KV usage 0.91  zero-progress evictions   0%
+      headroom 10%          20.70 ± 0.01  paired vs 0%  +0.8% [+0.7%, +0.9%]  | evictions/req  0.20  recompute  2.6%  KV usage 0.90  zero-progress evictions   0%
+      headroom 20%          19.95 ± 0.01  paired vs 0%  -2.8% [-2.9%, -2.8%]  | evictions/req  0.14  recompute  2.0%  KV usage 0.84  zero-progress evictions   0%
+      headroom 30%          19.08 ± 0.01  paired vs 0%  -7.0% [-7.2%, -7.0%]  | evictions/req  0.09  recompute  1.2%  KV usage 0.78  zero-progress evictions   0%
+      cap 6 (x scale)       17.51 ± 0.01  paired vs 0% -14.7% [-14.8%, -14.7%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.70  zero-progress evictions   0%
+      cap 8 (x scale)       20.19 ± 0.01  paired vs 0%  -1.7% [-1.7%, -1.6%]  | evictions/req  0.20  recompute  2.3%  KV usage 0.87  zero-progress evictions   3%
+      cap 12 (x scale)      20.53 ± 0.02  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  0.59  recompute  5.6%  KV usage 0.94  zero-progress evictions  15%
+      reserve max_tokens    18.58 ± 0.01  paired vs 0%  -9.5% [-9.6%, -9.4%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.76  zero-progress evictions   0%
+    chat
+      headroom 0%           19.35 ± 0.48  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  0.73  recompute  4.1%  KV usage 0.98  zero-progress evictions  36%
+      headroom 2%           19.75 ± 0.50  paired vs 0%  +2.0% [+1.9%, +2.2%]  | evictions/req  0.20  recompute  1.6%  KV usage 0.97  zero-progress evictions  15%
+      headroom 5%           19.69 ± 0.48  paired vs 0%  +1.7% [+1.7%, +1.8%]  | evictions/req  0.03  recompute  0.4%  KV usage 0.95  zero-progress evictions   8%
+      headroom 10%          19.07 ± 0.46  paired vs 0%  -1.5% [-1.7%, -1.3%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.90  zero-progress evictions   0%
+      headroom 20%          17.55 ± 0.45  paired vs 0%  -9.3% [-9.4%, -9.2%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.80  zero-progress evictions   0%
+      headroom 30%          15.90 ± 0.42  paired vs 0% -17.8% [-18.1%, -17.6%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.70  zero-progress evictions   0%
+      cap 6 (x scale)       17.38 ± 0.05  paired vs 0% -10.1% [-12.2%, -7.1%]  | evictions/req  0.02  recompute  0.1%  KV usage 0.79  zero-progress evictions  12%
+      cap 8 (x scale)       19.36 ± 0.48  paired vs 0%  +0.0% [-0.1%, +0.2%]  | evictions/req  0.50  recompute  2.8%  KV usage 0.96  zero-progress evictions  35%
+      cap 12 (x scale)      19.35 ± 0.48  paired vs 0%  -0.0% [-0.1%, +0.1%]  | evictions/req  0.73  recompute  4.1%  KV usage 0.98  zero-progress evictions  36%
+      reserve max_tokens     8.15 ± 0.06  paired vs 0% -57.9% [-58.7%, -56.8%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.31  zero-progress evictions   0%
+    bimodal
+      headroom 0%           15.78 ± 0.22  paired vs 0%  +0.0% [+0.0%, +0.0%]  | evictions/req  0.63  recompute  3.6%  KV usage 0.98  zero-progress evictions  37%
+      headroom 2%           15.96 ± 0.23  paired vs 0%  +1.1% [+0.9%, +1.3%]  | evictions/req  0.24  recompute  2.2%  KV usage 0.97  zero-progress evictions  14%
+      headroom 5%           15.88 ± 0.23  paired vs 0%  +0.7% [+0.5%, +0.8%]  | evictions/req  0.09  recompute  1.3%  KV usage 0.95  zero-progress evictions   3%
+      headroom 10%          15.50 ± 0.21  paired vs 0%  -1.8% [-2.0%, -1.5%]  | evictions/req  0.05  recompute  0.8%  KV usage 0.91  zero-progress evictions   0%
+      headroom 20%          14.55 ± 0.19  paired vs 0%  -7.8% [-8.2%, -7.4%]  | evictions/req  0.03  recompute  0.5%  KV usage 0.83  zero-progress evictions   0%
+      headroom 30%          13.51 ± 0.22  paired vs 0% -14.4% [-15.1%, -13.8%]  | evictions/req  0.02  recompute  0.3%  KV usage 0.76  zero-progress evictions   0%
+      cap 6 (x scale)       15.48 ± 0.17  paired vs 0%  -1.9% [-2.4%, -1.4%]  | evictions/req  0.34  recompute  2.1%  KV usage 0.93  zero-progress evictions  26%
+      cap 8 (x scale)       15.74 ± 0.23  paired vs 0%  -0.3% [-0.3%, -0.2%]  | evictions/req  0.57  recompute  3.4%  KV usage 0.97  zero-progress evictions  34%
+      cap 12 (x scale)      15.78 ± 0.22  paired vs 0%  -0.0% [-0.1%, +0.0%]  | evictions/req  0.63  recompute  3.6%  KV usage 0.98  zero-progress evictions  36%
+      reserve max_tokens     8.10 ± 0.05  paired vs 0% -48.7% [-49.1%, -47.8%]  | evictions/req  0.00  recompute  0.0%  KV usage 0.41  zero-progress evictions   0%

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="410" viewBox="0 0 960 410" role="img"><title>Admission headroom: an inverted U</title><desc>Paired change in saturation throughput versus percentage of KV blocks kept free at admission, x4 cache, three workloads, with and without a prefix cache.</desc><rect width="960" height="410" fill="#fcfcfb"/><text x="64" y="58" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">No prefix cache</text>
+<line x1="64" x2="452" y1="319.0" y2="319.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="323.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">-20</text>
+<line x1="64" x2="452" y1="249.0" y2="249.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="253.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">-10</text>
+<line x1="64" x2="452" y1="179.0" y2="179.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="183.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">+0</text>
+<line x1="64" x2="452" y1="109.0" y2="109.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="56" y="113.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">+10</text>
+<text x="64.0" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0</text>
+<text x="193.3" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">10</text>
+<text x="322.7" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">20</text>
+<text x="452.0" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">30</text>
+<line x1="64" x2="452" y1="354" y2="354" stroke="#8a8984" stroke-width="1"/>
+<text x="258.0" y="394" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">KV blocks kept free at admission (%)</text>
+<text transform="translate(16,214.0) rotate(-90)" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">throughput vs zero headroom (%)</text>
+<line x1="64" x2="452" y1="179.0" y2="179.0" stroke="#52514e" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="448" y="173.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#52514e" text-anchor="end"></text>
+<path d="M64.0,179.0 L89.9,159.1 L128.7,153.8 L193.3,156.9 L322.7,185.3 L452.0,219.0" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="64.0" cy="179.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 0%: +0.0% vs none (seeds +0.0 to +0.0)</title></circle>
+<circle cx="89.9" cy="159.1" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 2%: +2.8% vs none (seeds +2.7 to +3.0)</title></circle>
+<circle cx="128.7" cy="153.8" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 5%: +3.6% vs none (seeds +3.5 to +3.7)</title></circle>
+<circle cx="193.3" cy="156.9" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 10%: +3.2% vs none (seeds +3.1 to +3.2)</title></circle>
+<circle cx="322.7" cy="185.3" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 20%: -0.9% vs none (seeds -1.0 to -0.8)</title></circle>
+<circle cx="452.0" cy="219.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 30%: -5.7% vs none (seeds -5.8 to -5.6)</title></circle>
+<path d="M64.0,179.0 L89.9,126.5 L128.7,116.8 L193.3,138.8 L322.7,197.9 L452.0,262.0" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round"/>
+<rect x="59.8" y="174.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 0%: +0.0% vs none (seeds +0.0 to +0.0)</title></rect>
+<rect x="85.7" y="122.3" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 2%: +7.5% vs none (seeds +5.9 to +8.8)</title></rect>
+<rect x="124.5" y="112.6" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 5%: +8.9% vs none (seeds +6.9 to +10.8)</title></rect>
+<rect x="189.1" y="134.6" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 10%: +5.7% vs none (seeds +4.1 to +7.7)</title></rect>
+<rect x="318.5" y="193.7" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 20%: -2.7% vs none (seeds -4.2 to -1.1)</title></rect>
+<rect x="447.8" y="257.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 30%: -11.9% vs none (seeds -13.0 to -10.5)</title></rect>
+<path d="M64.0,179.0 L89.9,108.4 L128.7,94.8 L193.3,110.4 L322.7,156.7 L452.0,209.4" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="64.0,173.5 69.0,183.0 59.0,183.0" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 0%: +0.0% vs none (seeds +0.0 to +0.0)</title></polygon>
+<polygon points="89.9,102.9 94.9,112.4 84.9,112.4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 2%: +10.1% vs none (seeds +8.8 to +12.8)</title></polygon>
+<polygon points="128.7,89.3 133.7,98.8 123.7,98.8" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 5%: +12.0% vs none (seeds +10.1 to +14.8)</title></polygon>
+<polygon points="193.3,104.9 198.3,114.4 188.3,114.4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 10%: +9.8% vs none (seeds +7.5 to +12.4)</title></polygon>
+<polygon points="322.7,151.2 327.7,160.7 317.7,160.7" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 20%: +3.2% vs none (seeds +1.2 to +6.0)</title></polygon>
+<polygon points="452.0,203.9 457.0,213.4 447.0,213.4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 30%: -4.3% vs none (seeds -6.1 to -1.9)</title></polygon><text x="544" y="58" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">With prefix cache (own blocks reusable)</text>
+<line x1="544" x2="932" y1="319.0" y2="319.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="323.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">-20</text>
+<line x1="544" x2="932" y1="249.0" y2="249.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="253.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">-10</text>
+<line x1="544" x2="932" y1="179.0" y2="179.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="183.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">+0</text>
+<line x1="544" x2="932" y1="109.0" y2="109.0" stroke="#e6e5e1" stroke-width="1"/>
+<text x="536" y="113.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="end">+10</text>
+<text x="544.0" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">0</text>
+<text x="673.3" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">10</text>
+<text x="802.7" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">20</text>
+<text x="932.0" y="372" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#8a8984" text-anchor="middle">30</text>
+<line x1="544" x2="932" y1="354" y2="354" stroke="#8a8984" stroke-width="1"/>
+<text x="738.0" y="394" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">KV blocks kept free at admission (%)</text>
+<text transform="translate(496,214.0) rotate(-90)" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e" text-anchor="middle">throughput vs zero headroom (%)</text>
+<line x1="544" x2="932" y1="179.0" y2="179.0" stroke="#52514e" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="928" y="173.0" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#52514e" text-anchor="end"></text>
+<path d="M544.0,179.0 L569.9,168.1 L608.7,170.0 L673.3,173.2 L802.7,198.9 L932.0,228.3" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="544.0" cy="179.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 0%: +0.0% vs none (seeds +0.0 to +0.0)</title></circle>
+<circle cx="569.9" cy="168.1" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 2%: +1.6% vs none (seeds +1.3 to +1.6)</title></circle>
+<circle cx="608.7" cy="170.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 5%: +1.3% vs none (seeds +1.2 to +1.3)</title></circle>
+<circle cx="673.3" cy="173.2" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 10%: +0.8% vs none (seeds +0.7 to +0.9)</title></circle>
+<circle cx="802.7" cy="198.9" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 20%: -2.8% vs none (seeds -2.9 to -2.8)</title></circle>
+<circle cx="932.0" cy="228.3" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>homog, headroom 30%: -7.0% vs none (seeds -7.2 to -7.0)</title></circle>
+<path d="M544.0,179.0 L569.9,164.7 L608.7,166.9 L673.3,189.2 L802.7,244.2 L932.0,303.9" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round"/>
+<rect x="539.8" y="174.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 0%: +0.0% vs none (seeds +0.0 to +0.0)</title></rect>
+<rect x="565.7" y="160.5" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 2%: +2.0% vs none (seeds +1.9 to +2.2)</title></rect>
+<rect x="604.5" y="162.7" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 5%: +1.7% vs none (seeds +1.7 to +1.8)</title></rect>
+<rect x="669.1" y="185.0" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 10%: -1.5% vs none (seeds -1.7 to -1.3)</title></rect>
+<rect x="798.5" y="240.0" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 20%: -9.3% vs none (seeds -9.4 to -9.2)</title></rect>
+<rect x="927.8" y="299.7" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat, headroom 30%: -17.8% vs none (seeds -18.1 to -17.6)</title></rect>
+<path d="M544.0,179.0 L569.9,171.2 L608.7,174.4 L673.3,191.6 L802.7,233.7 L932.0,279.8" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="544.0,173.5 549.0,183.0 539.0,183.0" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 0%: +0.0% vs none (seeds +0.0 to +0.0)</title></polygon>
+<polygon points="569.9,165.7 574.9,175.2 564.9,175.2" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 2%: +1.1% vs none (seeds +0.9 to +1.3)</title></polygon>
+<polygon points="608.7,168.9 613.7,178.4 603.7,178.4" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 5%: +0.7% vs none (seeds +0.5 to +0.8)</title></polygon>
+<polygon points="673.3,186.1 678.3,195.6 668.3,195.6" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 10%: -1.8% vs none (seeds -2.0 to -1.5)</title></polygon>
+<polygon points="802.7,228.2 807.7,237.7 797.7,237.7" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 20%: -7.8% vs none (seeds -8.2 to -7.4)</title></polygon>
+<polygon points="932.0,274.3 937.0,283.8 927.0,283.8" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal, headroom 30%: -14.4% vs none (seeds -15.1 to -13.8)</title></polygon><circle cx="69.0" cy="22.0" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>uniform</title></circle>
+<text x="80" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">uniform</text>
+<rect x="139.8" y="17.8" width="8.4" height="8.4" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>chat mix</title></rect>
+<text x="155" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">chat mix</text>
+<polygon points="226.0,16.5 231.0,26.0 221.0,26.0" fill="#1baf7a" stroke="#fcfcfb" stroke-width="2"><title>bimodal</title></polygon>
+<text x="237" y="26" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#52514e">bimodal</text></svg>

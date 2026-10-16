@@ -1,0 +1,27 @@
+Probe reproduces the original Engine's per-step log exactly (max batch 4, 7, 8, 16, 24, 32).
+
+A1-A3: behaviour inside one step, 400-step window
+  max batch | peak blocks after prefill | steps over capacity | steps admitting >1 | tokens to self-evicted req
+          4 |                 114 / 192 |                   0 |                  0 |                          0
+          7 |                 192 / 192 |                   0 |                  0 |                          0
+          8 |                 198 / 192 |                   6 |                  5 |                          4
+         16 |                 224 / 192 |                  82 |                 20 |                          7
+         24 |                 224 / 192 |                 110 |                 20 |                          7
+         32 |                 224 / 192 |                 110 |                 20 |                          7
+
+A4: step cost. The original engine advances one step per call regardless of work:
+  max batch 32: prefill tokens per step range 0-512, every step costs 1.
+  Re-prefill therefore costs no time; only the 512-token prefill budget limits it.
+
+A6: workload ceiling. Only 24 requests exist, so any limit >= 24 is 'unlimited':
+  per-step logs identical for max batch 24 and 32: True
+  Because admission reserves nothing (A2), far more requests run at once than the
+  cache holds even as bare prompts (12 x 16 blocks = 192):
+    max batch 12: most requests ever running at once = 12
+    max batch 16: most requests ever running at once = 16
+    max batch 32: most requests ever running at once = 23
+
+A7: completion counts are window-bound. Completions by step:
+  max batch  4: 400: 5, 800: 13, 1600: 24
+  max batch  8: 400: 8, 800: 24, 1600: 24
+  max batch 32: 400: 8, 800: 24, 1600: 24

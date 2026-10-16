@@ -1,0 +1,10 @@
+E6  recovery after a burst; chat; x4 cache; prefix cache ON; base 0.024x4, burst 1.5x for t=3000-4500
+    mean waiting-queue length per window (sampled every 25 steps), 5 seeds
+
+  headroom 0%, no burst  t0-3k   0.4  t3-4k   3.5  t5-10k   4.6  t10-15k   3.9  t15-20k   2.4  t20-30k   2.1  t30-40k   2.6   | backlogged decode tok/u 18.61
+  headroom 0%, burst     t0-3k   0.4  t3-4k  24.4  t5-10k  30.5  t10-15k  12.1  t15-20k   2.9  t20-30k   1.8  t30-40k   2.4   | backlogged decode tok/u 18.87
+
+  headroom 5%, no burst  t0-3k   0.6  t3-4k   3.5  t5-10k   4.4  t10-15k   3.5  t15-20k   2.4  t20-30k   2.2  t30-40k   2.6   | backlogged decode tok/u 18.83
+  headroom 5%, burst     t0-3k   0.6  t3-4k  24.5  t5-10k  27.1  t10-15k   8.6  t15-20k   3.0  t20-30k   1.9  t30-40k   2.4   | backlogged decode tok/u 19.07
+
+  offered decode load at the base rate is ~17.1 tok/u (mean chat output ~178 tokens x 0.096 req/u)
